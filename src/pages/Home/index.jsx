@@ -1,6 +1,7 @@
 import React from 'react';
 import Typical from 'react-typical';
 import profileImg from '../../images/profile.png';
+import Particles from '../../components/Particles';
 import {
   Button,
   DivBox,
@@ -23,6 +24,7 @@ export default function Home() {
   return (
     <Section>
       <DivBox>
+        <Particles />
         <Image src={profileImg} />
         <H1>Bolby Doe</H1>
         <Label>
