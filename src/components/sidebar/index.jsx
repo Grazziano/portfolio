@@ -14,7 +14,7 @@ export default function Sidebar() {
       <Nav>
         <Menu>
           <Li >
-            <Active href='/home'>
+            <Active href='/'>
               <Icon class='icon-home'>
                 <House />
               </Icon>
