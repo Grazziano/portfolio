@@ -21,6 +21,14 @@ export const DivBox = styled.div`
   text-align: center;
   position: relative;
   z-index: 1;
+
+  @media (max-width: 1366px) {
+    margin: 5%;
+  }
+
+  @media (max-width: 1024px) {
+    margin: 5%;
+  }
 `;
 
 export const Div = styled.div``;
