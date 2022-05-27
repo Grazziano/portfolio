@@ -29,6 +29,10 @@ export const Image = styled.img`
   border-style: none;
   vertical-align: middle;
   width: 250px;
+
+  @media (max-width: 1366px) {
+    width: 100px;
+  }
 `;
 
 export const Button = styled.button`
@@ -46,6 +50,16 @@ export const Button = styled.button`
   overflow: hidden;
   line-height: 1;
   padding: 12px 32px;
+
+  @media (max-width: 1366px) {
+    font-size: 12px;
+    margin-bottom: 50px;
+  }
+
+  @media (max-width: 1024px) {
+    font-size: 12px;
+    margin-bottom: 80px;
+  }
 `;
 
 export const H1 = styled.h1`
@@ -57,6 +71,14 @@ export const H1 = styled.h1`
   margin: 20px 0;
   text-decoration: none solid rgb(255, 255, 255);
   text-align: center;
+
+  @media (max-width: 1366px) {
+    font-size: 25px;
+  }
+
+  @media (max-width: 1024px) {
+    font-size: 25px;
+  }
 `;
 
 export const Label = styled.label`
@@ -92,4 +114,8 @@ export const DivScrollDown = styled.div`
   position: fixed;
   width: 100%;
   z-index: 1;
+
+  @media (max-width: 1366px) {
+    font-size: 10px;
+  }
 `;
