@@ -20,6 +20,10 @@ export const Grid = styled.div`
   gap: 2.5rem;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const Left = styled.div`
@@ -73,5 +77,10 @@ export const Button = styled.a`
     height: 100%;
     width: 0%;
     z-index: 1;
+    transition: width 0.5s ease;
+  }
+
+  :hover::after {
+    width: 100%;
   }
 `;
