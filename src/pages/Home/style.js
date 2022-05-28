@@ -73,20 +73,12 @@ export const Button = styled.button`
 export const H1 = styled.h1`
   color: #fff;
   font-family: 'Rubik', sans-serif;
-  font-size: 36px;
+  font-size: 2.3rem;
   font-weight: 700;
   line-height: 43.2px;
   margin: 20px 0;
   text-decoration: none solid rgb(255, 255, 255);
   text-align: center;
-
-  @media (max-width: 1366px) {
-    font-size: 25px;
-  }
-
-  @media (max-width: 1024px) {
-    font-size: 25px;
-  }
 `;
 
 export const Label = styled.label`
