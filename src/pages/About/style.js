@@ -4,7 +4,7 @@ export const Section = styled.section`
   height: 100vh;
   display: flex;
   align-items: center;
-  background: #101010;
+  /* background: #101010; */
 `;
 
 export const Container = styled.div`
@@ -37,12 +37,12 @@ export const Left = styled.div`
 export const Right = styled.div`
   > * {
     margin-bottom: 1.1rem;
-    color: #fff;
+    /* color: #fff; */
   }
 
   h4 {
     font-weight: 500;
-    background: #ff282b;
+    background: #ff4c60;
     display: inline-block;
     padding: 5px 15px;
     font-size: 16px;
@@ -63,14 +63,14 @@ export const Button = styled.a`
   text-decoration: none;
   display: inline-block;
   padding: 10px 25px;
-  border: 2px solid #ff282b;
+  border: 2px solid #ff4c60;
   border-radius: 5px;
   position: relative;
   z-index: 1;
 
   ::after {
     content: '';
-    background: #ff282b;
+    background: #ff4c60;
     position: absolute;
     top: 0;
     left: 0;

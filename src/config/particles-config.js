@@ -1,7 +1,7 @@
 const particlesConfig = {
   background: {
     color: {
-      value: '#353353',
+      // value: '#353353',
     },
     position: '50% 50%',
     repeat: 'no-repeat',
