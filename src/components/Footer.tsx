@@ -48,7 +48,7 @@ function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-border/40 mt-8 pt-8 text-center text-sm text-muted-foreground">
+        <div className="border-t border-border/80 mt-8 pt-8 text-center text-sm text-muted-foreground">
           <p>© {currentYear} Grazziano Portfolio. All rights reserved.</p>
           <p className="mt-2">
             Designed & Built with Next, TypeScript & Tailwind CSS
