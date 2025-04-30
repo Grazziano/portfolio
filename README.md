@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfólio Pessoal
 
-## Getting Started
+Este é um projeto de portfólio pessoal desenvolvido com **Next.js**, **TypeScript**, **Tailwind CSS** e **ShadCN UI**, com o objetivo de apresentar projetos, experiências profissionais e habilidades técnicas.
 
-First, run the development server:
+## Tecnologias Utilizadas
+
+- [Next.js](https://nextjs.org/) — Framework React para aplicações web rápidas e escaláveis.
+- [TypeScript](https://www.typescriptlang.org/) — Superset do JavaScript que adiciona tipagem estática.
+- [Tailwind CSS](https://tailwindcss.com/) — Framework de utilitários CSS para construção de interfaces modernas.
+- [ShadCN UI](https://ui.shadcn.dev/) — Coleção de componentes acessíveis e estilizados com Tailwind.
+
+## Funcionalidades
+
+- Página inicial com apresentação pessoal
+- Seção de projetos com imagens, descrição e links
+- Seção de experiências profissionais e formação acadêmica
+- Contato com formulário funcional (opcional: integração com EmailJS ou outro serviço)
+- Design responsivo e acessível
+- Modo claro/escuro
+
+## Instalação
+
+1. Clone o repositório:
+
+```bash
+git clone https://github.com/Grazziano/portfolio.git
+cd portfolio
+```
+
+2. Instale as dependências:
+
+```bash
+npm install
+# ou
+yarn install
+```
+
+3. Inicie o servidor de desenvolvimento:
 
 ```bash
 npm run dev
-# or
+# ou
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Acesse no navegador: `http://localhost:3000`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Estrutura do Projeto
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+/
+├── components/        # Componentes reutilizáveis da interface
+├── app/               # Rotas e páginas (Next.js App Router)
+├── public/            # Arquivos públicos (imagens, favicon, etc.)
+├── styles/            # Estilos globais
+├── data/              # Informações para listagem
+├── lib/               # Funções auxiliares
+├── types/             # Tipagens TypeScript
+├── config/            # Configurações de temas e UI
+```
 
-## Learn More
+## Deploy
 
-To learn more about Next.js, take a look at the following resources:
+Este projeto pode ser facilmente hospedado no [Vercel](https://vercel.com/) com suporte nativo ao Next.js.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Licença
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Este projeto está licenciado sob a [MIT License](LICENSE).
