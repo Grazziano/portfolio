@@ -2,6 +2,10 @@
 
 Este é um projeto de portfólio pessoal desenvolvido com **Next.js**, **TypeScript**, **Tailwind CSS** e **ShadCN UI**, com o objetivo de apresentar projetos, experiências profissionais e habilidades técnicas.
 
+<div align="center">
+  <img src="./public/img/portfolio.png" width="500" heigth="500">
+</div>
+
 ## Tecnologias Utilizadas
 
 - [Next.js](https://nextjs.org/) — Framework React para aplicações web rápidas e escaláveis.
