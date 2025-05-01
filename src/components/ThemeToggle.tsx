@@ -35,7 +35,7 @@ function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded-full bg-secondary text-foreground hover:bg-accent transition-colors"
+      className="p-2 rounded-full bg-secondary text-foreground hover:bg-accent transition-colors cursor-pointer"
       aria-label="Toggle theme"
     >
       {isDark ? <Sun size={20} /> : <Moon size={20} />}
