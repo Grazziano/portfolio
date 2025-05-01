@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import emailjs from 'emailjs-com';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
@@ -16,6 +16,7 @@ import {
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { Button } from './ui/button';
+import { LoaderCircle } from 'lucide-react';
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -30,6 +31,8 @@ const formSchema = z.object({
 });
 
 function Contact() {
+  const [isLoading, setIsLoading] = useState(false);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -41,6 +44,7 @@ function Contact() {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     const { name, email, message } = values;
+    setIsLoading(true);
 
     emailjs
       .send(
@@ -60,7 +64,8 @@ function Contact() {
       .catch((error) => {
         console.error('EmailJS Error:', error);
         toast.error('Something went wrong. Please try again later.');
-      });
+      })
+      .finally(() => setIsLoading(false));
   }
 
   return (
@@ -121,8 +126,16 @@ function Contact() {
                   </FormItem>
                 )}
               />
-              <Button type="submit" className="w-full cursor-pointer">
-                Send Message
+              <Button
+                type="submit"
+                disabled={isLoading}
+                className="w-full cursor-pointer"
+              >
+                {isLoading ? (
+                  <LoaderCircle className="animate-spin" />
+                ) : (
+                  'Send Message'
+                )}
               </Button>
             </form>
           </Form>
