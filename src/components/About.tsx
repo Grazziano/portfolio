@@ -5,7 +5,7 @@ import { Progress } from './ui/progress';
 
 function About() {
   return (
-    <section id="about" className="bg-secondary/30 px-4 md:px-8 lg:px-16">
+    <section id="about" className="bg-secondary/30 px-4 py-24 md:px-8 lg:px-16">
       <div className="section-container">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">About Me</h2>
