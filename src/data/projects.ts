@@ -53,7 +53,7 @@ export const projectsData: Project[] = [
     title: "Portfolio Website",
     description: "A responsive personal portfolio website to showcase projects and skills.",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "ShadCN UI"],
-    image: "",
+    image: "https://github.com/Grazziano/portfolio/blob/master/public/img/portfolio.png?raw=true",
     github: "https://github.com/Grazziano/portfolio",
     category: "Frontend",
   },
