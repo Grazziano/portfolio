@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import emailjs from 'emailjs-com';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
@@ -39,10 +40,27 @@ function Contact() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    // TODO: send data to an email service
-    toast.success("Message sent successfully! I'll get back to you soon.");
-    form.reset();
+    const { name, email, message } = values;
+
+    emailjs
+      .send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        {
+          from_name: name,
+          from_email: email,
+          message,
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+      )
+      .then(() => {
+        toast.success("Message sent successfully! I'll get back to you soon.");
+        form.reset();
+      })
+      .catch((error) => {
+        console.error('EmailJS Error:', error);
+        toast.error('Something went wrong. Please try again later.');
+      });
   }
 
   return (
@@ -103,7 +121,7 @@ function Contact() {
                   </FormItem>
                 )}
               />
-              <Button type="submit" className="w-full">
+              <Button type="submit" className="w-full cursor-pointer">
                 Send Message
               </Button>
             </form>
