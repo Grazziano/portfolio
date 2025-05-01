@@ -7,7 +7,7 @@ function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen flex justify-center items-center pt-16"
+      className="min-h-screen flex justify-center items-center px-4 md:px-8 lg:px-16"
     >
       <div className="section-container">
         <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-8">
