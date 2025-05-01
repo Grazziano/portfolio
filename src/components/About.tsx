@@ -15,7 +15,7 @@ function About() {
         <div className="grid md:grid-cols-2 gap-12">
           <div className="animate-fade-in">
             <h3 className="text-2xl font-semibold mb-4">My Story</h3>
-            <p className="mb-4">
+            <p className="mb-4 text-justify">
               Olá! Me chamo Grazziano, sou analista de sistemas com 36 anos,
               nascido e residente em Pelotas/RS. Iniciei minha trajetória na
               tecnologia em 2017, ao ingressar no curso de Tecnologia da
@@ -25,21 +25,21 @@ function About() {
               trabalhando com PHP, Laravel e PostgreSQL no desenvolvimento e
               manutenção de sistemas públicos.
             </p>
-            <p className="mb-4">
+            <p className="mb-4 text-justify">
               Em 2021, decidi aprofundar minha formação e ingressei na Trybe,
               escola de programação com foco em desenvolvimento web full stack.
               Concluí o curso em setembro de 2022, com mais de 1.500 horas de
               aprendizado prático em metodologias ágeis, versionamento de código
               (Git/GitHub), além de diversos projetos realizados em equipe.
             </p>
-            <p className="mb-4">
+            <p className="mb-4 text-justify">
               Desde então, venho me especializando em tecnologias modernas como
               JavaScript, ReactJS, NodeJS, Typescript, Jest e MySQL. Tenho foco
               na escrita de código limpo, testes automatizados e soluções
               escaláveis, sempre buscando contribuir com projetos que impactem
               positivamente os usuários.
             </p>
-            <p className="mb-6">
+            <p className="mb-6 text-justify">
               Em 18 de março de 2024, iniciei meu mestrado em Ciência da
               Computação na Universidade Federal de Pelotas (UFPel). Essa nova
               etapa acadêmica tem como objetivo aprofundar meus conhecimentos em
