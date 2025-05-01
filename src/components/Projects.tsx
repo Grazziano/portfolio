@@ -27,8 +27,8 @@ function Projects() {
           <h2 className="text-3xl md:text-4xl font-bold mb-4">My Projects</h2>
           <div className="h-1 w-20 bg-primary mx-auto mb-8"></div>
           <p className="max-w-2xl mx-auto text-muted-foreground">
-            Here are some of the projects I've worked on. Each project presented
-            unique challenges and opportunities for growth.
+            Here are some of the projects I&apos;ve worked on. Each project
+            presented unique challenges and opportunities for growth.
           </p>
         </div>
 

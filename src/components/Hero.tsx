@@ -13,7 +13,7 @@ function Hero() {
         <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-8">
           <div className="md:w-1/2 animate-fade-in">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-              Hi, I'm{' '}
+              Hi, I&apos;m{' '}
               <span className="text-primary dark:text-blue-400">
                 Grazziano Fagundes
               </span>
