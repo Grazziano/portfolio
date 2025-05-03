@@ -62,7 +62,11 @@ function Projects() {
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform hover:scale-105 duration-300"
+                  className={`w-full h-full transition-transform hover:scale-105 duration-300 ${
+                    project.category === 'Mobile'
+                      ? 'object-contain'
+                      : 'object-cover'
+                  }`}
                 />
               </div>
               <CardHeader>
