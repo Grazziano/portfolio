@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github, Linkedin, Twitter } from 'lucide-react';
+import { Github, Gitlab, Linkedin, Twitter } from 'lucide-react';
 
 function Footer() {
   const currentYear = new Date().getFullYear();
@@ -28,6 +28,15 @@ function Footer() {
               <Github size={24} />
             </a>
             <a
+              href="https://gitlab.com/grazzianofagundes"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground/70 hover:text-foreground transition-colors"
+              aria-label="GitLab"
+            >
+              <Gitlab size={24} />
+            </a>
+            <a
               href="https://linkedin.com/in/grazziano-fagundes"
               target="_blank"
               rel="noopener noreferrer"
@@ -36,7 +45,7 @@ function Footer() {
             >
               <Linkedin size={24} />
             </a>
-            <a
+            {/* <a
               href="https://twitter.com/grazzianobf"
               target="_blank"
               rel="noopener noreferrer"
@@ -44,7 +53,7 @@ function Footer() {
               aria-label="Twitter"
             >
               <Twitter size={24} />
-            </a>
+            </a> */}
           </div>
         </div>
 
