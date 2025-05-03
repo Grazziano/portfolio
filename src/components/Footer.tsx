@@ -45,7 +45,7 @@ function Footer() {
             >
               <Linkedin size={24} />
             </a>
-            {/* <a
+            <a
               href="https://twitter.com/grazzianobf"
               target="_blank"
               rel="noopener noreferrer"
@@ -53,7 +53,7 @@ function Footer() {
               aria-label="Twitter"
             >
               <Twitter size={24} />
-            </a> */}
+            </a>
           </div>
         </div>
 
