@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, JetBrains_Mono } from 'next/font/google';
 import { Toaster } from 'sonner';
 import { ThemeProvider } from '@/components/ThemeProvider';
-import './globals.css';
+import '@/styles/globals.css';
 
 const inter = Inter({
   variable: '--font-sans',
