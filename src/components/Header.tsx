@@ -63,6 +63,7 @@ function Header() {
 
           {/* Mobile Navigation Button */}
           <div className="flex items-center md:hidden gap-2">
+            <ModeToggle />
             <Button
               variant="ghost"
               size="icon"
