@@ -37,7 +37,7 @@ function Footer() {
               <Gitlab size={24} />
             </a>
             <a
-              href="https://linkedin.com/in/grazziano-fagundes"
+              href="https://www.linkedin.com/in/grazziano-fagundes/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-foreground/70 hover:text-foreground transition-colors"
