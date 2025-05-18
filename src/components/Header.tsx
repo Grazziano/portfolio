@@ -29,6 +29,20 @@ function Header() {
     { name: 'Contact', href: '#contact' },
   ];
 
+  // Função para scroll suave
+  const handleSmoothScroll = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    const el = document.getElementById(targetId);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMenuOpen(false); // Fecha o menu mobile (se estiver aberto)
+  };
+
   return (
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
@@ -39,7 +53,11 @@ function Header() {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <a href="#home" className="text-xl font-bold">
+          <a
+            href="#home"
+            className="text-xl font-bold"
+            onClick={(e) => handleSmoothScroll(e, '#home')}
+          >
             Grazziano <span className="text-primary">Portfolio</span>
           </a>
 
@@ -51,6 +69,7 @@ function Header() {
                   <a
                     href={item.href}
                     className="text-foreground/80 hover:text-foreground transition-colors"
+                    onClick={(e) => handleSmoothScroll(e, item.href)}
                   >
                     {item.name}
                   </a>
@@ -84,7 +103,8 @@ function Header() {
                   <a
                     href={item.href}
                     className="block text-foreground/80 hover:text-foreground transition-colors"
-                    onClick={() => setIsMenuOpen(false)}
+                    // onClick={() => setIsMenuOpen(false)}
+                    onClick={(e) => handleSmoothScroll(e, item.href)}
                   >
                     {item.name}
                   </a>

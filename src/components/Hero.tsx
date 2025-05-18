@@ -1,9 +1,17 @@
-import React from 'react';
+'use client';
 import { Button } from './ui/button';
 import { ArrowDown } from 'lucide-react';
 import RotatingText from './RotatingText';
 
 function Hero() {
+  const handleSmoothScroll = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const element = document.getElementById('about');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section
       id="home"
@@ -48,7 +56,11 @@ function Hero() {
         </div>
 
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce hidden md:block">
-          <a href="#about" aria-label="Scroll down">
+          <a
+            href="#about"
+            aria-label="Scroll down"
+            onClick={handleSmoothScroll}
+          >
             <ArrowDown className="text-primary" />
           </a>
         </div>
