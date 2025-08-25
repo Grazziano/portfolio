@@ -51,7 +51,8 @@ function About() {
             </p>
             <Button asChild>
               <a
-                href="https://drive.google.com/file/d/1IdTIrHVrGnRfOOl4gKh4Cn0MEF_kXv8Z/view?usp=drive_link"
+                // href="https://drive.google.com/file/d/1IdTIrHVrGnRfOOl4gKh4Cn0MEF_kXv8Z/view?usp=drive_link"
+                href="https://drive.google.com/file/d/1m7wmUYVGwx1_3O-SPAzWj02yLEtz53D2/view?usp=drive_link"
                 target="_blank"
                 download="grazziano_resume.pdf"
               >
