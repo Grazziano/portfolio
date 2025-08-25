@@ -316,6 +316,24 @@ export const projectsData: Project[] = [
     liveDemo: "https://aluroni-eight.vercel.app/",
     category: "Frontend",
   },
+  {
+    id: 33,
+    title: "Adote um amigo",
+    description: "API completa para adoção de pets, permitindo o cadastro de animais, gerenciamento de perfis de usuários e acompanhamento do processo de adoção.",
+    technologies: ["NestJS", "TypeScript", "Docker", "PostgreSQL", "TypeORM"],
+    image: "https://cdn.pixabay.com/photo/2015/09/17/17/25/code-944499_960_720.jpg",
+    github: "https://github.com/Grazziano/api-adote-um-amigo",
+    category: "Backend",
+  },
+  {
+    id: 34,
+    title: "VISO-B.A.S.S.",
+    description: "VISO-B.A.S.S. - VISO-Based API for Structured Storage - API com foco em armazenamento estruturado, baseada no modelo VISO.",
+    technologies: ["NestJS", "TypeScript", "Docker", "MongoDB", "Mongoose"],
+    image: "https://cdn.pixabay.com/photo/2016/03/27/18/54/technology-1283624_1280.jpg",
+    github: "https://github.com/Grazziano/VISO-BASS",
+    category: "Backend",
+  },
 ];
 
 export const categories = Array.from(
