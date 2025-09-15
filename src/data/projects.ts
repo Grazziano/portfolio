@@ -332,6 +332,7 @@ export const projectsData: Project[] = [
     technologies: ["NestJS", "TypeScript", "Docker", "MongoDB", "Mongoose"],
     image: "https://wallpapercave.com/wp/wp14064295.png",
     github: "https://github.com/Grazziano/VISO-BASS",
+    liveDemo: "https://viso-bass.onrender.com/",
     category: "Backend",
   },
 ];
