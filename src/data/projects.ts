@@ -9,6 +9,10 @@ export interface Project {
   category: string;
 }
 
+const NODE_IMG = 'https://wallpapercave.com/wp/wp5070716.jpg';
+const NEST_IMG = 'https://wallpapercave.com/wp/wp14064295.png';
+const JAVA_IMG = 'https://wallpapercave.com/wp/wp14820637.webp';
+
 export const projectsData: Project[] = [
   {
     id: 1,
@@ -35,7 +39,7 @@ export const projectsData: Project[] = [
     title: "Api Vendas",
     description: "A RESTful API for a e-commerce platform with user authentication, product management, and order processing.",
     technologies: ["Node.js", "Express", "TypeScript", "TypeORM", "PostgreSQL"],
-    image: "https://wallpapercave.com/wp/wp5070716.jpg",
+    image: NODE_IMG,
     github: "https://github.com/Grazziano/api-vendas",
     category: "Backend",
   },
@@ -63,7 +67,7 @@ export const projectsData: Project[] = [
     title: "Barber API",
     description: "API para barbearia com autenticação, cadastro de clientes e agendamentos.",
     technologies: ["Express", "TypeScript", "Prisma", "Stripe"],
-    image: "https://wallpapercave.com/wp/wp5070716.jpg",
+    image: NODE_IMG,
     github: "https://github.com/Grazziano/barber-backend",
     category: "Backend",
   },
@@ -321,7 +325,7 @@ export const projectsData: Project[] = [
     title: "Adote um amigo",
     description: "API completa para adoção de pets, permitindo o cadastro de animais, gerenciamento de perfis de usuários e acompanhamento do processo de adoção.",
     technologies: ["NestJS", "TypeScript", "Docker", "PostgreSQL", "TypeORM"],
-    image: "https://wallpapercave.com/wp/wp14064295.png",
+    image: NEST_IMG,
     github: "https://github.com/Grazziano/api-adote-um-amigo",
     category: "Backend",
   },
@@ -330,9 +334,27 @@ export const projectsData: Project[] = [
     title: "VISO-B.A.S.S.",
     description: "VISO-B.A.S.S. - VISO-Based API for Structured Storage - API com foco em armazenamento estruturado, baseada no modelo VISO.",
     technologies: ["NestJS", "TypeScript", "Docker", "MongoDB", "Mongoose"],
-    image: "https://wallpapercave.com/wp/wp14064295.png",
+    image: NEST_IMG,
     github: "https://github.com/Grazziano/VISO-BASS",
     liveDemo: "https://viso-bass.onrender.com/",
+    category: "Backend",
+  },
+  {
+    id: 35,
+    title: "Regra de Progressao",
+    description: "Programa em Java, que receber os valores dos pesos de cada atividade avaliativa, bem como as notas de um estudante, e terá que apresentar a média ponderada das avaliações.",
+    technologies: ["Java"],
+    image: JAVA_IMG,
+    github: "https://github.com/Grazziano/regra-de-progressao",
+    category: "Backend",
+  },
+  {
+    id: 36,
+    title: "Sistema de Votacao",
+    description: "Sistema de votação simples utilizando a linguagem de programação Java. O objetivo é simular um sistema de cadastro de candidatas(os), eleitoras(es) e realizar o processo de votação. O projeto abrange a manipulação de dados através de listas e oferece uma interface de linha de comando (CLI) para interagir com o sistema.",
+    technologies: ["Java"],
+    image: JAVA_IMG,
+    github: "https://github.com/Grazziano/sistema-de-votacao",
     category: "Backend",
   },
 ];
