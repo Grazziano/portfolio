@@ -12,6 +12,10 @@ export interface Project {
 const NODE_IMG = 'https://wallpapercave.com/wp/wp5070716.jpg';
 const NEST_IMG = 'https://wallpapercave.com/wp/wp14064295.png';
 const JAVA_IMG = 'https://wallpapercave.com/wp/wp14820637.webp';
+const SPRING_IMG = 'https://miro.medium.com/v2/resize:fit:1100/format:webp/1*o5FmjKTPdJTbhGE2MIjo6w.jpeg';
+const REACT_IMG = 'https://wallpapercave.com/wp/wp2465923.jpg';
+const REACT_NATIVE_IMG = 'https://wallpapercave.com/wp/wp4923985.png';
+const PYTHON_IMG = 'https://wallpapercave.com/wp/wp14813367.webp';
 
 export const projectsData: Project[] = [
   {
@@ -356,6 +360,16 @@ export const projectsData: Project[] = [
     image: JAVA_IMG,
     github: "https://github.com/Grazziano/sistema-de-votacao",
     category: "Backend",
+  },
+  {
+    id: 37,
+    title: "Repositórios de Pesquisa - UFPel",
+    description: "Landing page para os repositórios de pesquisa da UFPel.",
+    technologies: ["React.js", "Tailwind CSS", "Shacn UI", "TypeScript"],
+    image: "https://github.com/Grazziano/projetos-siot-ufpel/blob/main/public/layout.png?raw=true",
+    github: "https://github.com/Grazziano/projetos-siot-ufpel",
+    liveDemo: "https://grazziano.github.io/projetos-siot-ufpel/",
+    category: "Frontend",
   },
 ];
 
