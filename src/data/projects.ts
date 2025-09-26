@@ -12,10 +12,10 @@ export interface Project {
 const NODE_IMG = 'https://wallpapercave.com/wp/wp5070716.jpg';
 const NEST_IMG = 'https://wallpapercave.com/wp/wp14064295.png';
 const JAVA_IMG = 'https://wallpapercave.com/wp/wp14820637.webp';
-const SPRING_IMG = 'https://miro.medium.com/v2/resize:fit:1100/format:webp/1*o5FmjKTPdJTbhGE2MIjo6w.jpeg';
-const REACT_IMG = 'https://wallpapercave.com/wp/wp2465923.jpg';
-const REACT_NATIVE_IMG = 'https://wallpapercave.com/wp/wp4923985.png';
-const PYTHON_IMG = 'https://wallpapercave.com/wp/wp14813367.webp';
+// const SPRING_IMG = 'https://miro.medium.com/v2/resize:fit:1100/format:webp/1*o5FmjKTPdJTbhGE2MIjo6w.jpeg';
+// const REACT_IMG = 'https://wallpapercave.com/wp/wp2465923.jpg';
+// const REACT_NATIVE_IMG = 'https://wallpapercave.com/wp/wp4923985.png';
+// const PYTHON_IMG = 'https://wallpapercave.com/wp/wp14813367.webp';
 
 export const projectsData: Project[] = [
   {
