@@ -1,5 +1,5 @@
 export interface Project {
-  id: number;
+  id?: string;
   title: string;
   description: string;
   technologies: string[];
@@ -17,9 +17,8 @@ const JAVA_IMG = 'https://wallpapercave.com/wp/wp14820637.webp';
 // const REACT_NATIVE_IMG = 'https://wallpapercave.com/wp/wp4923985.png';
 // const PYTHON_IMG = 'https://wallpapercave.com/wp/wp14813367.webp';
 
-export const projectsData: Project[] = [
+const rawProjectsData: Project[] = [
   {
-    id: 1,
     title: "E-commerce Platform",
     description: "A full-featured e-commerce platform with shopping cart, user authentication, and payment processing features.",
     technologies: ["Next.js", "TypeScript", "Ant Design", "Firebase", "MongoDB", "Stripe"],
@@ -29,7 +28,6 @@ export const projectsData: Project[] = [
     category: "Full Stack",
   },
   {
-    id: 2,
     title: "Sistema de Chamados",
     description: "Aplicação para criação de chamados, com registro de usuários, login e controle de rotas.",
     technologies: ["React.js", "Firebase", "CSS"],
@@ -39,7 +37,6 @@ export const projectsData: Project[] = [
     category: "Full Stack",
   },
   {
-    id: 3,
     title: "Api Vendas",
     description: "A RESTful API for a e-commerce platform with user authentication, product management, and order processing.",
     technologies: ["Node.js", "Express", "TypeScript", "TypeORM", "PostgreSQL"],
@@ -48,7 +45,6 @@ export const projectsData: Project[] = [
     category: "Backend",
   },
   {
-    id: 4,
     title: "Pizzaria",
     description: "A RESTful API for a social media platform with authentication, user profiles, and content management.",
     technologies: ["React", "React Native", "TypeScript", "Node.js", "Express", "PostgreSQL", "JWT"],
@@ -57,7 +53,6 @@ export const projectsData: Project[] = [
     category: "Full Stack",
   },
   {
-    id: 5,
     title: "Portfolio Website",
     description: "A responsive personal portfolio website to showcase projects and skills.",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "ShadCN UI"],
@@ -67,7 +62,6 @@ export const projectsData: Project[] = [
     category: "Frontend",
   },
   {
-    id: 6,
     title: "Barber API",
     description: "API para barbearia com autenticação, cadastro de clientes e agendamentos.",
     technologies: ["Express", "TypeScript", "Prisma", "Stripe"],
@@ -76,7 +70,6 @@ export const projectsData: Project[] = [
     category: "Backend",
   },
   {
-    id: 7,
     title: "Event Booking App",
     description: "Aplicação de reserva de eventos (Event Booking App) desenvolvida com Next.js, utilizando Clerk para autenticação de usuários, MongoDB como banco de dados, e estilização com NextUI.",
     technologies: ["Next.js", "TypeScript", "MongoDB", "NextUI", "Clerk"],
@@ -86,7 +79,6 @@ export const projectsData: Project[] = [
     category: "Full Stack",
   },
   {
-    id: 8,
     title: "NLW Planner",
     description: "Aplicação para planejar sua viagem.",
     technologies: ["React", "TypeScript"],
@@ -95,7 +87,6 @@ export const projectsData: Project[] = [
     category: "Frontend",
   },
   {
-    id: 9,
     title: "Study Timer",
     description: "O Study Timer é uma aplicação para cronometrar tempo de estudo, auxiliando na organização do tempo.",
     technologies: ["React", "TypeScript", "SASS"],
@@ -105,7 +96,6 @@ export const projectsData: Project[] = [
     category: "Frontend",
   },
   {
-    id: 10,
     title: "App Finanças Pessoais",
     description: "Aplicativo de Finanças Pessoais com React Native.",
     technologies: ["React Native", "TypeScript"],
@@ -114,7 +104,6 @@ export const projectsData: Project[] = [
     category: "Mobile",
   },
   {
-    id: 11,
     title: "Article Finder",
     description: "Article Finder é uma aplicação que permite realizar buscas de artigos acadêmicos em diversas plataformas, como arXiv, Google Scholar, IEEE, ACM Digital Library e PubMed. A aplicação também permite gerenciar o histórico de pesquisas e artigos favoritos.",
     technologies: ["React", "TypeScript", "Chakra UI"],
@@ -124,7 +113,6 @@ export const projectsData: Project[] = [
     category: "Frontend",
   },
   {
-    id: 12,
     title: "Job Portal",
     description: "Este é um portal de empregos desenvolvido com Next.js 13, MongoDB, Ant Design (antd), TailwindCSS e TypeScript. O projeto visa fornecer uma plataforma intuitiva para empregadores postarem vagas de emprego e candidatos se inscreverem nelas.",
     technologies: ["React", "TypeScript", "MongoDB", "Ant Design", "TailwindCSS"],
@@ -134,7 +122,6 @@ export const projectsData: Project[] = [
     category: "Full Stack",
   },
   {
-    id: 13,
     title: "Cronometro",
     description: "Aplicação para cronometrar tempo.",
     technologies: ["React Native", "TypeScript"],
@@ -143,7 +130,6 @@ export const projectsData: Project[] = [
     category: "Mobile",
   },
   {
-    id: 14,
     title: "Overflow - Question and Answer Platform",
     description: "Overflow é uma plataforma moderna de perguntas e respostas, desenvolvida com o objetivo de facilitar o compartilhamento de conhecimento entre desenvolvedores e entusiastas da tecnologia. A plataforma oferece uma interface intuitiva, autenticação segura e uma experiência rápida e dinâmica.",
     technologies: ["Next.js", "TypeScript", "Next UI", "MongoDB", "Clerk Auth"],
@@ -153,7 +139,6 @@ export const projectsData: Project[] = [
     category: "Full Stack",
   },
   {
-    id: 15,
     title: "Lista de Tarefas",
     description: "Lista de Tarefas React Native.",
     technologies: ["React Native"],
@@ -162,7 +147,6 @@ export const projectsData: Project[] = [
     category: "Mobile",
   },
   {
-    id: 16,
     title: "Barber Frontend",
     description: "Aplicação frontend para Barbearia com React.",
     technologies: ["React", "TypeScript", "Chakra UI", "Stripe", "axios"],
@@ -171,7 +155,6 @@ export const projectsData: Project[] = [
     category: "Frontend",
   },
   {
-    id: 17,
     title: "Finance AI",
     description: "Finance AI é uma aplicação web voltada para o gerenciamento e análise financeira inteligente. Utilizando um conjunto robusto de tecnologias modernas, o projeto busca oferecer uma plataforma intuitiva e eficiente para análise e gestão financeira, com foco em acessibilidade e performance.",
     technologies: ["Next.js", "TypeScript", "PostgreSQL", "TailwindCSS", "Prisma", "ShadCN UI"],
@@ -181,7 +164,6 @@ export const projectsData: Project[] = [
     category: "Full Stack",
   },
   {
-    id: 18,
     title: "Pixel Board",
     description: "Pixel board React JS.",
     technologies: ["React", "SASS", "React Color", "react-component-export-image"],
@@ -191,7 +173,6 @@ export const projectsData: Project[] = [
     category: "Frontend",
   },
   {
-    id: 19,
     title: "Lista de Países",
     description: "Lista de Países com Next.js.",
     technologies: ["Next.js"],
@@ -201,7 +182,6 @@ export const projectsData: Project[] = [
     category: "Frontend",
   },
   {
-    id: 20,
     title: "Flag Quiz - Guess the Flag Game",
     description: "Este é um jogo interativo de adivinhar bandeiras, desenvolvido com ReactJS e TypeScript, e estilizado com Chakra UI. O objetivo do jogo é testar seus conhecimentos sobre as bandeiras de diferentes países do mundo, oferecendo uma experiência divertida e educativa.",
     technologies: ["React", "TypeScript", "Chakra UI", "Rest Country API"],
@@ -211,7 +191,6 @@ export const projectsData: Project[] = [
     category: "Frontend",
   },
   {
-    id: 21,
     title: "Solar System",
     description: "Essa aplicação simulará uma visualização do Sistema Solar, bem como informações sobre diversas missões espacias que ocorreram ao longo da história.",
     technologies: ["React", "TypeScript", "Styled Components"],
@@ -221,7 +200,6 @@ export const projectsData: Project[] = [
     category: "Frontend",
   },
   {
-    id: 22,
     title: "Dev Post",
     description: "Rede social Dev Post.",
     technologies: ["React Native", "Firebase", "Styled Components"],
@@ -230,7 +208,6 @@ export const projectsData: Project[] = [
     category: "Mobile",
   },
   {
-    id: 23,
     title: "Sorteador de números",
     description: "Aplicação para sortear números.",
     technologies: ["React", "TypeScript", "Chakra UI"],
@@ -240,7 +217,6 @@ export const projectsData: Project[] = [
     category: "Frontend",
   },
   {
-    id: 24,
     title: "Gerador de Senhas",
     description: "Aplicação para geração de senhas.",
     technologies: ["React", "TypeScript", "CSS"],
@@ -250,7 +226,6 @@ export const projectsData: Project[] = [
     category: "Frontend",
   },
   {
-    id: 25,
     title: "Conversor de Moedas",
     description: "Conversor de moedas com React Native.",
     technologies: ["React Native"],
@@ -259,7 +234,6 @@ export const projectsData: Project[] = [
     category: "Mobile",
   },
   {
-    id: 26,
     title: "App Biscoito da Sorte",
     description: "Quebre o biscoito e descubra a mensagem!",
     technologies: ["React Native"],
@@ -268,7 +242,6 @@ export const projectsData: Project[] = [
     category: "Mobile",
   },
   {
-    id: 27,
     title: "Hey Grupos",
     description: "Aplicativo de mensagens realtime construido com React Native e Firebase.",
     technologies: ["React Native", "Firebase"],
@@ -277,7 +250,6 @@ export const projectsData: Project[] = [
     category: "Mobile",
   },
   {
-    id: 28,
     title: "Landing Page Travel App",
     description: "Esta é uma landing page projetada para promover experiências de viagem, construída utilizando Next.js, Tailwind CSS e TypeScript. A página oferece uma interface atraente onde os usuários podem explorar diferentes destinos, descobrir promoções especiais e se inspirar para suas próximas aventuras de viagem.",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
@@ -287,7 +259,6 @@ export const projectsData: Project[] = [
     category: "Frontend",
   },
   {
-    id: 29,
     title: "IMDB Clone",
     description: "Aplicação de clonagem da IMDB construida com Next.js e Tailwind CSS.",
     technologies: ["Next.js", "Tailwind CSS"],
@@ -297,7 +268,6 @@ export const projectsData: Project[] = [
     category: "Frontend",
   },
   {
-    id: 30,
     title: "Calculadora Álcool x Gasolina",
     description: "A principal diferença entre os dois combustíveis está na proporção entre o preço e o desempenho de cada um. Compare o preço do litro do álcool e da gasolina e descubra qual é o combustível mais vantajoso. O etanol vale a pena quando custar até 70% do valor da gasolina.",
     technologies: ["React Native", "Expo"],
@@ -306,7 +276,6 @@ export const projectsData: Project[] = [
     category: "Mobile",
   },
   {
-    id: 31,
     title: "Repositórios",
     description: "Aplicação para salvar meu repositórios favoritos.",
     technologies: ["React", "Styled Components"],
@@ -315,7 +284,6 @@ export const projectsData: Project[] = [
     category: "Frontend",
   },
   {
-    id: 32,
     title: "Site para o restaurante Aluroni",
     description: "Página para listagem de pratos do restaurante.",
     technologies: ["React", "TypeScript", "Styled Components", "Docker", "Eslint"],
@@ -325,7 +293,6 @@ export const projectsData: Project[] = [
     category: "Frontend",
   },
   {
-    id: 33,
     title: "Adote um amigo",
     description: "API completa para adoção de pets, permitindo o cadastro de animais, gerenciamento de perfis de usuários e acompanhamento do processo de adoção.",
     technologies: ["NestJS", "TypeScript", "Docker", "PostgreSQL", "TypeORM"],
@@ -334,7 +301,6 @@ export const projectsData: Project[] = [
     category: "Backend",
   },
   {
-    id: 34,
     title: "VISO-B.A.S.S.",
     description: "VISO-B.A.S.S. - VISO-Based API for Structured Storage - API com foco em armazenamento estruturado, baseada no modelo VISO.",
     technologies: ["NestJS", "TypeScript", "Docker", "MongoDB", "Mongoose"],
@@ -344,7 +310,6 @@ export const projectsData: Project[] = [
     category: "Backend",
   },
   {
-    id: 35,
     title: "Regra de Progressao",
     description: "Programa em Java, que receber os valores dos pesos de cada atividade avaliativa, bem como as notas de um estudante, e terá que apresentar a média ponderada das avaliações.",
     technologies: ["Java"],
@@ -353,7 +318,6 @@ export const projectsData: Project[] = [
     category: "Backend",
   },
   {
-    id: 36,
     title: "Sistema de Votacao",
     description: "Sistema de votação simples utilizando a linguagem de programação Java. O objetivo é simular um sistema de cadastro de candidatas(os), eleitoras(es) e realizar o processo de votação. O projeto abrange a manipulação de dados através de listas e oferece uma interface de linha de comando (CLI) para interagir com o sistema.",
     technologies: ["Java"],
@@ -362,7 +326,6 @@ export const projectsData: Project[] = [
     category: "Backend",
   },
   {
-    id: 37,
     title: "Repositórios de Pesquisa - UFPel",
     description: "Landing page para os repositórios de pesquisa da UFPel.",
     technologies: ["React.js", "Tailwind CSS", "Shacn UI", "TypeScript"],
@@ -372,7 +335,6 @@ export const projectsData: Project[] = [
     category: "Frontend",
   },
   {
-    id: 38,
     title: "Instagram Clone",
     description: "Este é um projeto de clone do Instagram desenvolvido com Next.js, Firebase, TailwindCSS e TypeScript. O objetivo é criar interface inspirada no Instagram.",
     technologies: ["Next.js", "Tailwind CSS", "Firebase", "TypeScript"],
@@ -381,7 +343,6 @@ export const projectsData: Project[] = [
     category: "Frontend",
   },
   {
-    id: 39,
     title: "Buscador de CEP",
     description: "O Buscador de CEP é uma aplicação web construída em React que permite consultar informações detalhadas a partir de um CEP válido. É uma ferramenta prática para obter dados como endereço completo e outras informações associadas ao CEP.",
     technologies: ["React.js", "CSS3"],
@@ -391,15 +352,19 @@ export const projectsData: Project[] = [
     category: "Frontend",
   },
   {
-    id: 40,
     title: "Slotify",
     description: "Slotify é um clone do Spotify, desenvolvido para fins educacionais, com o objetivo de replicar a experiência do usuário na popular plataforma de streaming de música. O projeto inclui funcionalidades como reprodução de músicas, criação de playlists, buscas por artistas, álbuns e muito mais.",
     technologies: ["PHP", "Javascript", "MySQL", "HTML", "CSS", "Bootstrap"],
     image: "https://github.com/Grazziano/Slotify/raw/master/assets/img/player.png",
     github: "https://github.com/Grazziano/Slotify",
-    category: "FullStack",
+    category: "Full Stack",
   },
 ];
+
+export const projectsData: Project[] = rawProjectsData.map((project, index) => ({
+  ...project,
+  id: (index + 1).toString(),
+}));
 
 export const categories = Array.from(
   new Set(projectsData.map((project) => project.category))
