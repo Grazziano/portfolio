@@ -371,6 +371,34 @@ export const projectsData: Project[] = [
     liveDemo: "https://grazziano.github.io/projetos-siot-ufpel/",
     category: "Frontend",
   },
+  {
+    id: 38,
+    title: "Instagram Clone",
+    description: "Este é um projeto de clone do Instagram desenvolvido com Next.js, Firebase, TailwindCSS e TypeScript. O objetivo é criar interface inspirada no Instagram.",
+    technologies: ["Next.js", "Tailwind CSS", "Firebase", "TypeScript"],
+    image: "https://github.com/Grazziano/instagram-clone/raw/master/public/screenshots/instagran-clone.png",
+    github: "https://github.com/Grazziano/instagram-clone",
+    category: "Frontend",
+  },
+  {
+    id: 39,
+    title: "Buscador de CEP",
+    description: "O Buscador de CEP é uma aplicação web construída em React que permite consultar informações detalhadas a partir de um CEP válido. É uma ferramenta prática para obter dados como endereço completo e outras informações associadas ao CEP.",
+    technologies: ["React.js", "CSS3"],
+    image: "https://github.com/Grazziano/buscador-cep/raw/master/docs/assets/tela_02.png",
+    github: "https://github.com/Grazziano/buscador-cep",
+    liveDemo: "https://buscador-cep-chi.vercel.app/",
+    category: "Frontend",
+  },
+  {
+    id: 40,
+    title: "Slotify",
+    description: "Slotify é um clone do Spotify, desenvolvido para fins educacionais, com o objetivo de replicar a experiência do usuário na popular plataforma de streaming de música. O projeto inclui funcionalidades como reprodução de músicas, criação de playlists, buscas por artistas, álbuns e muito mais.",
+    technologies: ["PHP", "Javascript", "MySQL", "HTML", "CSS", "Bootstrap"],
+    image: "https://github.com/Grazziano/Slotify/raw/master/assets/img/player.png",
+    github: "https://github.com/Grazziano/Slotify",
+    category: "FullStack",
+  },
 ];
 
 export const categories = Array.from(
