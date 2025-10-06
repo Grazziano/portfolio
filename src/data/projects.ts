@@ -19,21 +19,29 @@ const JAVA_IMG = 'https://wallpapercave.com/wp/wp14820637.webp';
 
 const rawProjectsData: Project[] = [
   {
-    title: "E-commerce Platform",
-    description: "A full-featured e-commerce platform with shopping cart, user authentication, and payment processing features.",
-    technologies: ["Next.js", "TypeScript", "Ant Design", "Firebase", "MongoDB", "Stripe"],
-    image: "https://github.com/Grazziano/ecommerce-app/blob/master/public/images/cart.png?raw=true",
-    github: "https://github.com/Grazziano/ecommerce-app",
-    liveDemo: "https://ecommerce-app-grazziano.vercel.app/auth/login",
-    category: "Full Stack",
-  },
-  {
     title: "Sistema de Chamados",
     description: "Aplicação para criação de chamados, com registro de usuários, login e controle de rotas.",
     technologies: ["React.js", "Firebase", "CSS"],
     image: "https://github.com/Grazziano/sistema-de-chamados/blob/master/docs/assets/sistema-chamados.PNG?raw=true",
     github: "https://github.com/Grazziano/sistema-de-chamados",
     liveDemo: "https://sistema-de-chamados-coral.vercel.app",
+    category: "Full Stack",
+  },
+  {
+    title: "Portfolio Website",
+    description: "A responsive personal portfolio website to showcase projects and skills.",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "ShadCN UI"],
+    image: "https://github.com/Grazziano/portfolio/blob/master/public/img/portfolio.png?raw=true",
+    github: "https://github.com/Grazziano/portfolio",
+    liveDemo: "https://portfolio-grazzianos-projects.vercel.app",
+    category: "Frontend",
+  },
+  {
+    title: "Book of Shadows",
+    description: "Um site temático de Halloween desenvolvido em Laravel com Bootstrap, que reúne lendas, contos macabros e permite que usuários publiquem suas próprias histórias assustadoras.",
+    technologies: ["Laravel", "Bootstrap", "MySQL", "PHP"],
+    image: "https://bytebucket.org/grazziano/book-of-shadows/raw/517f3a4438fe54691124005c2a1ec5ebf1b4cb9c/public/screenshots/home.png",
+    github: "https://bitbucket.org/grazziano/book-of-shadows/src/master/",
     category: "Full Stack",
   },
   {
@@ -44,6 +52,15 @@ const rawProjectsData: Project[] = [
     github: "https://github.com/Grazziano/VISO-BASS",
     liveDemo: "https://viso-bass.onrender.com/",
     category: "Backend",
+  },
+  {
+    title: "E-commerce Platform",
+    description: "A full-featured e-commerce platform with shopping cart, user authentication, and payment processing features.",
+    technologies: ["Next.js", "TypeScript", "Ant Design", "Firebase", "MongoDB", "Stripe"],
+    image: "https://github.com/Grazziano/ecommerce-app/blob/master/public/images/cart.png?raw=true",
+    github: "https://github.com/Grazziano/ecommerce-app",
+    liveDemo: "https://ecommerce-app-grazziano.vercel.app/auth/login",
+    category: "Full Stack",
   },
   {
     title: "AutoMax",
@@ -69,15 +86,6 @@ const rawProjectsData: Project[] = [
     image: NEST_IMG,
     github: "https://github.com/Grazziano/api-adote-um-amigo",
     category: "Backend",
-  },
-  {
-    title: "Portfolio Website",
-    description: "A responsive personal portfolio website to showcase projects and skills.",
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "ShadCN UI"],
-    image: "https://github.com/Grazziano/portfolio/blob/master/public/img/portfolio.png?raw=true",
-    github: "https://github.com/Grazziano/portfolio",
-    liveDemo: "https://portfolio-grazzianos-projects.vercel.app",
-    category: "Frontend",
   },
   {
     title: "Api Vendas",
