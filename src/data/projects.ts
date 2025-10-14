@@ -40,8 +40,8 @@ const rawProjectsData: Project[] = [
     title: "Book of Shadows",
     description: "Um site temático de Halloween desenvolvido em Laravel com Bootstrap, que reúne lendas, contos macabros e permite que usuários publiquem suas próprias histórias assustadoras.",
     technologies: ["Laravel", "Bootstrap", "MySQL", "PHP"],
-    image: "https://bytebucket.org/grazziano/book-of-shadows/raw/517f3a4438fe54691124005c2a1ec5ebf1b4cb9c/public/screenshots/home.png",
-    github: "https://bitbucket.org/grazziano/book-of-shadows/src/master/",
+    image: "https://github.com/Grazziano/book-of-shadows/blob/master/public/screenshots/home.png?raw=true",
+    github: "https://github.com/Grazziano/book-of-shadows",
     category: "Full Stack",
   },
   {
