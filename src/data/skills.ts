@@ -9,6 +9,13 @@ export interface Skill {
 }
 
 export const skillsData: SkillCategory[] = [
+  // {
+  //   category: 'Programming Languages',
+  //   skills: [
+  //     { name: 'JavaScript', level: 5 },
+  //     { name: 'PHP', level: 4 },
+  //   ],
+  // },
   {
     category: 'Frontend',
     skills: [
@@ -26,6 +33,7 @@ export const skillsData: SkillCategory[] = [
       { name: 'Node.js', level: 4 },
       { name: 'Express', level: 4 },
       { name: 'NestJS', level: 4 },
+      { name: 'Laravel', level: 4 },
       { name: 'MongoDB', level: 4 },
       { name: 'MySQL', level: 3 },
       { name: 'PostgreSQL', level: 3 },
@@ -39,4 +47,5 @@ export const skillsData: SkillCategory[] = [
       { name: 'Figma', level: 3 },
     ],
   },
+  // { category: 'Languages', skills: [{ name: 'English', level: 4 }] },
 ];
