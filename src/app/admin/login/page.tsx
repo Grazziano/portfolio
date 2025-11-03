@@ -4,31 +4,40 @@ import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-// import {
-//   AlertDialog,
-//   AlertDialogContent,
-//   AlertDialogDescription,
-//   AlertDialogHeader,
-//   AlertDialogTitle,
-// } from '@/components/ui/alert-dialog';
-import Cookies from 'js-cookie';
 
 export default function LoginPage() {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError('');
+    setLoading(true);
 
-    // Autenticação simples - em produção, use um sistema mais seguro
-    if (username === 'admin' && password === 'admin123') {
-      // Definir cookie de autenticação
-      Cookies.set('auth', 'true', { expires: 1 }); // Expira em 1 dia
-      router.push('/admin/projects');
-    } else {
-      setError('Usuário ou senha inválidos');
+    try {
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        router.push('/admin/projects');
+      } else {
+        setError(data.message || 'Erro ao fazer login');
+      }
+    } catch (err) {
+      console.error('Erro ao fazer login:', err);
+      setError('Erro ao conectar com o servidor');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -48,14 +57,14 @@ export default function LoginPage() {
           )}
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <label htmlFor="username" className="text-sm font-medium">
-                Usuário
+              <label htmlFor="email" className="text-sm font-medium">
+                Email
               </label>
               <Input
-                id="username"
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                id="email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
@@ -71,8 +80,8 @@ export default function LoginPage() {
                 required
               />
             </div>
-            <Button type="submit" className="w-full">
-              Entrar
+            <Button type="submit" className="w-full" disabled={loading}>
+              {loading ? 'Entrando...' : 'Entrar'}
             </Button>
           </form>
         </CardContent>
