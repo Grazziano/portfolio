@@ -1,7 +1,8 @@
 import React from 'react';
-import { Github, Gitlab, Linkedin, Twitter } from 'lucide-react';
+import { Github, Gitlab, Linkedin, Twitter, Lock } from 'lucide-react';
+import Link from 'next/link';
 
-function Footer() {
+export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -54,6 +55,13 @@ function Footer() {
             >
               <Twitter size={24} />
             </a>
+            <Link
+              href="/admin/login"
+              className="text-foreground/70 hover:text-foreground transition-colors"
+              aria-label="Admin"
+            >
+              <Lock size={24} />
+            </Link>
           </div>
         </div>
 
@@ -67,5 +75,3 @@ function Footer() {
     </footer>
   );
 }
-
-export default Footer;
