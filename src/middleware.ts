@@ -1,23 +1,22 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { verifyToken } from './lib/auth';
 
 export async function middleware(request: NextRequest) {
-  // Verificar se a rota é administrativa
-  if (request.nextUrl.pathname.startsWith('/admin/projects')) {
-    // Verificar se o usuário está autenticado usando o token JWT
-    const authToken = request.cookies.get('auth_token')?.value;
+  // Rotas que requerem autenticação
+  const protectedPaths = ['/admin/projects'];
+  const path = request.nextUrl.pathname;
 
-    if (!authToken) {
-      // Redirecionar para a página de login se não houver token
-      return NextResponse.redirect(new URL('/admin/login', request.url));
-    }
+  // Verificar se a rota atual requer autenticação
+  const isProtectedPath = protectedPaths.some((protectedPath) =>
+    path.startsWith(protectedPath)
+  );
 
-    // Verificar se o token é válido
-    const { valid } = await verifyToken(authToken);
+  if (isProtectedPath) {
+    // Verificação simplificada - apenas verifica se o cookie auth existe
+    const authCookie = request.cookies.get('auth')?.value;
 
-    if (!valid) {
-      // Redirecionar para a página de login se o token for inválido
+    if (!authCookie || authCookie !== 'true') {
+      // Redirecionar para a página de login se não houver cookie
       return NextResponse.redirect(new URL('/admin/login', request.url));
     }
   }

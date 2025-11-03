@@ -18,24 +18,17 @@ export default function LoginPage() {
     setLoading(true);
 
     try {
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
-      const data = await response.json();
-
-      if (data.success) {
+      // Autenticação simplificada - apenas verifica se email e senha correspondem aos valores fixos
+      if (email === 'admin@example.com' && password === 'admin123') {
+        // Definir cookie de autenticação
+        document.cookie = 'auth=true; path=/; max-age=86400'; // 24 horas
         router.push('/admin/projects');
       } else {
-        setError(data.message || 'Erro ao fazer login');
+        setError('Credenciais inválidas');
       }
     } catch (err) {
       console.error('Erro ao fazer login:', err);
-      setError('Erro ao conectar com o servidor');
+      setError('Erro ao processar o login');
     } finally {
       setLoading(false);
     }
