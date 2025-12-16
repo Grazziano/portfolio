@@ -16,6 +16,7 @@ const JAVA_IMG = 'https://wallpapercave.com/wp/wp14820637.webp';
 // const REACT_IMG = 'https://wallpapercave.com/wp/wp2465923.jpg';
 // const REACT_NATIVE_IMG = 'https://wallpapercave.com/wp/wp4923985.png';
 // const PYTHON_IMG = 'https://wallpapercave.com/wp/wp14813367.webp';
+const RAILS_IMG = 'https://wallpapercave.com/wp/wp13521122.jpg';
 
 const rawProjectsData: Project[] = [
   {
@@ -45,13 +46,22 @@ const rawProjectsData: Project[] = [
     category: "Full Stack",
   },
   {
-    title: "VISO-B.A.S.S.",
-    description: "VISO-B.A.S.S. - VISO-Based API for Structured Storage - API com foco em armazenamento estruturado, baseada no modelo VISO.",
+    title: "VISO-B.A.S.S. Backend",
+    description: "VISO-B.A.S.S. (VISO-Based API for Structured Storage) — API voltada ao armazenamento estruturado de dados, fundamentada no modelo VISO, com foco em organização, escalabilidade e persistência eficiente das informações.",
     technologies: ["NestJS", "TypeScript", "Docker", "MongoDB", "Mongoose"],
     image: NEST_IMG,
     github: "https://github.com/Grazziano/VISO-BASS",
     liveDemo: "https://viso-bass.onrender.com/",
     category: "Backend",
+  },
+  {
+    title: "VISO-B.A.S.S. Frontend",
+    description: "Aplicação em React para a API VISO-B.A.S.S. — Interface frontend desenvolvida em React, utilizando Tailwind CSS e shadcn/ui, para consumo e visualização dos dados fornecidos pela API VISO-B.A.S.S., com foco em usabilidade, consistência visual e interação eficiente com o armazenamento estruturado baseado no modelo VISO.",
+    technologies: ["React.js", "TypeScript", "TailwindCSS", "Shadcn UI"],
+    image: "https://github.com/Grazziano/viso-bass-web/blob/master/public/images/dashboard.png?raw=true",
+    github: "https://github.com/Grazziano/viso-bass-web",
+    liveDemo: "https://viso-bass-react.vercel.app/login",
+    category: "Frontend",
   },
   {
     title: "E-commerce Platform",
@@ -374,6 +384,14 @@ const rawProjectsData: Project[] = [
     technologies: ["PHP", "Javascript", "MySQL", "HTML", "CSS", "Bootstrap"],
     image: "https://github.com/Grazziano/Slotify/raw/master/assets/img/player.png",
     github: "https://github.com/Grazziano/Slotify",
+    category: "Full Stack",
+  },
+  {
+    title: "Rails Crypto",
+    description: "Aplicação desenvolvida em Ruby on Rails que consome a API da CoinMarketCap para exibir informações atualizadas sobre criptomoedas, incluindo preço, variação, capitalização de mercado e outros indicadores relevantes.",
+    technologies: ["Ruby on Rails", "CoinMarketCap API", "Bootstrap"],
+    image: RAILS_IMG,
+    github: "https://github.com/Grazziano/rails-crypto",
     category: "Full Stack",
   },
 ];
