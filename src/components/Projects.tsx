@@ -58,15 +58,11 @@ function Projects() {
               key={project.id}
               className="overflow-hidden hover:shadow-lg transition-shadow animate-fade-in"
             >
-              <div className="h-48 overflow-hidden">
+              <div className="h-64 overflow-hidden bg-muted/30 flex items-center justify-center">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className={`w-full h-full transition-transform hover:scale-105 duration-300 ${
-                    project.category === 'Mobile'
-                      ? 'object-contain'
-                      : 'object-cover'
-                  }`}
+                  className="w-full h-full object-contain transition-transform hover:scale-105 duration-300"
                 />
               </div>
               <CardHeader>
