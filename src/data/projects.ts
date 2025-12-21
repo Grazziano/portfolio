@@ -67,7 +67,7 @@ const rawProjectsData: Project[] = [
       'Aplicação em React para a API VISO-B.A.S.S. — Interface frontend desenvolvida em React, utilizando Tailwind CSS e shadcn/ui, para consumo e visualização dos dados fornecidos pela API VISO-B.A.S.S., com foco em usabilidade, consistência visual e interação eficiente com o armazenamento estruturado baseado no modelo VISO.',
     technologies: ['React.js', 'TypeScript', 'TailwindCSS', 'Shadcn UI'],
     image:
-      'https://github.com/Grazziano/viso-bass-web/blob/master/docs/screenshots/dark/dashboard.png?raw=true',
+      'https://github.com/Grazziano/viso-bass-web/blob/master/docs/screenshots/dark/dashboard_novo.png?raw=true',
     github: 'https://github.com/Grazziano/viso-bass-web',
     liveDemo: 'https://viso-bass-react.vercel.app/login',
     category: 'Frontend',
