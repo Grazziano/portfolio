@@ -10,6 +10,7 @@ const schema = z.object({
   email: z.string().email(),
   name: z.string().min(2),
   password: z.string().min(6),
+  adminToken: z.string().min(1),
 });
 
 export async function registerAction(formData: FormData) {
@@ -18,10 +19,17 @@ export async function registerAction(formData: FormData) {
       email: String(formData.get('email') || ''),
       name: String(formData.get('name') || ''),
       password: String(formData.get('password') || ''),
+      adminToken: String(formData.get('adminToken') || ''),
     };
     const parsed = schema.safeParse(raw);
     if (!parsed.success) {
       return { error: 'Dados inválidos' };
+    }
+    if (!process.env.ADMIN_TOKEN) {
+      return { error: 'ADMIN_TOKEN não configurado' };
+    }
+    if (parsed.data.adminToken !== process.env.ADMIN_TOKEN) {
+      return { error: 'ADMIN_TOKEN inválido' };
     }
     const exists = await prisma.user.findUnique({
       where: { email: parsed.data.email },

@@ -57,6 +57,15 @@ export default function FormClient({ action }: Props) {
               required
             />
           </div>
+          <div>
+            <label className="block text-sm mb-1">Admin Token</label>
+            <Input
+              name="adminToken"
+              type="password"
+              placeholder="Informe o Admin Token"
+              required
+            />
+          </div>
           {message && (
             <p
               className={`text-sm ${
