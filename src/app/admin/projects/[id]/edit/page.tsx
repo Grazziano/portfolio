@@ -7,17 +7,23 @@ import { prisma } from '@/lib/prisma';
 export default async function EditProjectPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
   const session = await getServerSession(authOptions);
+
   if (!session) redirect('/login');
+
+  const { id } = await params;
+
   const project = await prisma.project.findUnique({
-    where: { id: params.id },
+    where: { id },
   });
+
   if (!project) redirect('/');
+
   return (
     <FormEditClient
-      id={params.id}
+      id={id}
       initial={{
         title: project.title,
         description: project.description,
