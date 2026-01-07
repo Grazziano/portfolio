@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
@@ -26,43 +26,35 @@ const schema = z.object({
   listed: z.boolean(),
 });
 
-type Props = { id: string };
+type Props = {
+  id: string;
+  initial: {
+    title: string;
+    description: string;
+    image: string;
+    category: string;
+    technologies: string[];
+    github: string | null;
+    liveDemo: string | null;
+    listed: boolean;
+  };
+};
 
-export default function FormEditClient({ id }: Props) {
+export default function FormEditClient({ id, initial }: Props) {
   const form = useForm<z.infer<typeof schema>>({
     resolver: zodResolver(schema),
     defaultValues: {
-      title: '',
-      description: '',
-      image: '',
-      category: '',
-      technologies: '',
-      github: '',
-      liveDemo: '',
-      listed: true,
+      title: initial.title,
+      description: initial.description,
+      image: initial.image,
+      category: initial.category,
+      technologies: (initial.technologies ?? []).join(', '),
+      github: initial.github ?? '',
+      liveDemo: initial.liveDemo ?? '',
+      listed: initial.listed,
     },
   });
   const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    const load = async () => {
-      const res = await fetch(`/api/projects/${id}`, { cache: 'no-store' });
-      if (!res.ok) return;
-      const p = await res.json();
-      form.reset({
-        title: p.title,
-        description: p.description,
-        image: p.image,
-        category: p.category,
-        technologies: (p.technologies ?? []).join(', '),
-        github: p.github ?? '',
-        liveDemo: p.liveDemo ?? '',
-        listed: !!p.listed,
-      });
-    };
-    load();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id]);
 
   const onSubmit = async (values: z.infer<typeof schema>) => {
     setLoading(true);
