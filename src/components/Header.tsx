@@ -4,10 +4,12 @@ import { Button } from './ui/button';
 import { Menu } from 'lucide-react';
 // import ThemeToggle from './ThemeToggle';
 import { ModeToggle } from './ModeToggle';
+import { signOut } from 'next-auth/react';
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,6 +22,19 @@ function Header() {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const check = async () => {
+      try {
+        const res = await fetch('/api/auth/session', { cache: 'no-store' });
+        const data = await res.json();
+        setIsLoggedIn(!!data?.user);
+      } catch {
+        setIsLoggedIn(false);
+      }
+    };
+    check();
   }, []);
 
   const navItems = [
@@ -78,6 +93,25 @@ function Header() {
             </ul>
             {/* <ThemeToggle /> */}
             <ModeToggle />
+            <div className="flex items-center gap-2">
+              {isLoggedIn && (
+                <Button asChild variant="outline">
+                  <a href="/admin/projects/new">Add Project</a>
+                </Button>
+              )}
+              {isLoggedIn ? (
+                <Button
+                  variant="ghost"
+                  onClick={() => signOut({ callbackUrl: '/' })}
+                >
+                  Logout
+                </Button>
+              ) : (
+                <Button asChild>
+                  <a href="/login">Login</a>
+                </Button>
+              )}
+            </div>
           </nav>
 
           {/* Mobile Navigation Button */}
@@ -110,6 +144,38 @@ function Header() {
                   </a>
                 </li>
               ))}
+              <li>
+                {isLoggedIn ? (
+                  <button
+                    className="block text-foreground/80 hover:text-foreground transition-colors"
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      signOut({ callbackUrl: '/' });
+                    }}
+                  >
+                    Logout
+                  </button>
+                ) : (
+                  <a
+                    href="/login"
+                    className="block text-foreground/80 hover:text-foreground transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Login
+                  </a>
+                )}
+              </li>
+              {isLoggedIn && (
+                <li>
+                  <a
+                    href="/admin/projects/new"
+                    className="block text-foreground/80 hover:text-foreground transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Add Project
+                  </a>
+                </li>
+              )}
             </ul>
           </div>
         )}
