@@ -9,15 +9,6 @@ export interface Project {
   category: string;
 }
 
-const NODE_IMG = 'https://wallpapercave.com/wp/wp5070716.jpg';
-const NEST_IMG = 'https://wallpapercave.com/wp/wp14064295.png';
-const JAVA_IMG = 'https://wallpapercave.com/wp/wp14820637.webp';
-// const SPRING_IMG = 'https://miro.medium.com/v2/resize:fit:1100/format:webp/1*o5FmjKTPdJTbhGE2MIjo6w.jpeg';
-// const REACT_IMG = 'https://wallpapercave.com/wp/wp2465923.jpg';
-// const REACT_NATIVE_IMG = 'https://wallpapercave.com/wp/wp4923985.png';
-// const PYTHON_IMG = 'https://wallpapercave.com/wp/wp14813367.webp';
-const RAILS_IMG = 'https://wallpapercave.com/wp/wp13521122.jpg';
-
 const rawProjectsData: Project[] = [
   {
     title: 'Readstack',
@@ -67,7 +58,7 @@ const rawProjectsData: Project[] = [
     description:
       'VISO-B.A.S.S. (VISO-Based API for Structured Storage) — API voltada ao armazenamento estruturado de dados, fundamentada no modelo VISO, com foco em organização, escalabilidade e persistência eficiente das informações.',
     technologies: ['NestJS', 'TypeScript', 'Docker', 'MongoDB', 'Mongoose'],
-    image: NEST_IMG,
+    image: '',
     github: 'https://github.com/Grazziano/VISO-BASS',
     liveDemo: 'https://viso-bass.onrender.com/',
     category: 'Backend',
@@ -141,7 +132,7 @@ const rawProjectsData: Project[] = [
     description:
       'API completa para adoção de pets, permitindo o cadastro de animais, gerenciamento de perfis de usuários e acompanhamento do processo de adoção.',
     technologies: ['NestJS', 'TypeScript', 'Docker', 'PostgreSQL', 'TypeORM'],
-    image: NEST_IMG,
+    image: '',
     github: 'https://github.com/Grazziano/api-adote-um-amigo',
     category: 'Backend',
   },
@@ -150,7 +141,7 @@ const rawProjectsData: Project[] = [
     description:
       'A RESTful API for a e-commerce platform with user authentication, product management, and order processing.',
     technologies: ['Node.js', 'Express', 'TypeScript', 'TypeORM', 'PostgreSQL'],
-    image: NODE_IMG,
+    image: '',
     github: 'https://github.com/Grazziano/api-vendas',
     category: 'Backend',
   },
@@ -159,7 +150,7 @@ const rawProjectsData: Project[] = [
     description:
       'API para barbearia com autenticação, cadastro de clientes e agendamentos.',
     technologies: ['Express', 'TypeScript', 'Prisma', 'Stripe'],
-    image: NODE_IMG,
+    image: '',
     github: 'https://github.com/Grazziano/barber-backend',
     category: 'Backend',
   },
@@ -452,7 +443,7 @@ const rawProjectsData: Project[] = [
     description:
       'Programa em Java, que receber os valores dos pesos de cada atividade avaliativa, bem como as notas de um estudante, e terá que apresentar a média ponderada das avaliações.',
     technologies: ['Java'],
-    image: JAVA_IMG,
+    image: '',
     github: 'https://github.com/Grazziano/regra-de-progressao',
     category: 'Backend',
   },
@@ -461,7 +452,7 @@ const rawProjectsData: Project[] = [
     description:
       'Sistema de votação simples utilizando a linguagem de programação Java. O objetivo é simular um sistema de cadastro de candidatas(os), eleitoras(es) e realizar o processo de votação. O projeto abrange a manipulação de dados através de listas e oferece uma interface de linha de comando (CLI) para interagir com o sistema.',
     technologies: ['Java'],
-    image: JAVA_IMG,
+    image: '',
     github: 'https://github.com/Grazziano/sistema-de-votacao',
     category: 'Backend',
   },
@@ -511,7 +502,7 @@ const rawProjectsData: Project[] = [
     description:
       'Aplicação desenvolvida em Ruby on Rails que consome a API da CoinMarketCap para exibir informações atualizadas sobre criptomoedas, incluindo preço, variação, capitalização de mercado e outros indicadores relevantes.',
     technologies: ['Ruby on Rails', 'CoinMarketCap API', 'Bootstrap'],
-    image: RAILS_IMG,
+    image: '',
     github: 'https://github.com/Grazziano/rails-crypto',
     category: 'Full Stack',
   },

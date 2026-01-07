@@ -13,6 +13,8 @@ import {
 } from './ui/card';
 import { Badge } from './ui/badge';
 import { Github } from 'lucide-react';
+import Image from 'next/image';
+import NoImage from '../../public/img/sem_imagem.png';
 
 function Projects() {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -119,9 +121,11 @@ function Projects() {
               className="overflow-hidden hover:shadow-lg transition-shadow animate-fade-in"
             >
               <div className="h-64 overflow-hidden bg-muted/30 flex items-center justify-center">
-                <img
-                  src={project.image}
+                <Image
+                  src={project.image || NoImage}
                   alt={project.title}
+                  width={500}
+                  height={300}
                   className="w-full h-full object-contain transition-transform hover:scale-105 duration-300"
                 />
               </div>
