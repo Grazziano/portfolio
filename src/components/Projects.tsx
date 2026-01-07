@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useMemo, useState } from 'react';
 import type { Project } from '@/data/projects';
+import { Input } from './ui/input';
 import { Button } from './ui/button';
 import {
   Card,
@@ -15,6 +16,7 @@ import { Github } from 'lucide-react';
 function Projects() {
   const [activeCategory, setActiveCategory] = useState('All');
   const [dynamicProjects, setDynamicProjects] = useState<Project[]>([]);
+  const [query, setQuery] = useState('');
 
   type DbProject = {
     id?: string;
@@ -59,10 +61,22 @@ function Projects() {
     [allProjects]
   );
 
-  const filteredProjects =
-    activeCategory === 'All'
-      ? allProjects
-      : allProjects.filter((project) => project.category === activeCategory);
+  const filteredProjects = useMemo(() => {
+    const byCategory =
+      activeCategory === 'All'
+        ? allProjects
+        : allProjects.filter((project) => project.category === activeCategory);
+    const q = query.trim().toLowerCase();
+    if (!q) return byCategory;
+    return byCategory.filter((p) => {
+      const techs = (p.technologies ?? []).join(' ').toLowerCase();
+      return (
+        p.title.toLowerCase().includes(q) ||
+        p.description.toLowerCase().includes(q) ||
+        techs.includes(q)
+      );
+    });
+  }, [allProjects, activeCategory, query]);
 
   return (
     <section id="projects" className="px-4 py-24 md:px-8 lg:px-16">
@@ -76,7 +90,7 @@ function Projects() {
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-2 mb-10">
+        <div className="flex flex-wrap justify-center gap-2 mb-6">
           {categories.map((category) => (
             <Button
               key={category}
@@ -87,6 +101,13 @@ function Projects() {
               {category}
             </Button>
           ))}
+        </div>
+        <div className="max-w-xl mx-auto mb-10">
+          <Input
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Buscar por título, descrição ou tecnologias"
+          />
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
