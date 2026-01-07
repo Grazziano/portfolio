@@ -9,6 +9,7 @@ async function main() {
     select: { title: true },
   });
   const existingTitles = new Set(existing.map((e) => e.title));
+  await prisma.project.updateMany({ data: { listed: true } });
   const toInsert = projectsData
     .filter((p) => !existingTitles.has(p.title))
     .map((p) => ({
@@ -19,6 +20,7 @@ async function main() {
       github: p.github ?? null,
       liveDemo: p.liveDemo ?? null,
       category: p.category,
+      listed: true,
     }));
   const inserted =
     toInsert.length > 0

@@ -20,6 +20,17 @@ const RAILS_IMG = 'https://wallpapercave.com/wp/wp13521122.jpg';
 
 const rawProjectsData: Project[] = [
   {
+    title: 'Readstack',
+    description:
+      'Readstack é uma aplicação web para organização de leituras, permitindo que usuários adicionem livros, criem listas personalizadas e acompanhem seu progresso de leitura de forma simples e intuitiva. Ideal para leitores que querem manter controle do que estão lendo, do que já leram e do que pretendem ler futuramente.',
+    technologies: ['React.js', 'Firebase', 'Tailwind CSS', 'ShadCN UI'],
+    image:
+      'https://github.com/Grazziano/Readstack/blob/master/docs/preview.png?raw=true',
+    github: 'https://github.com/Grazziano/Readstack',
+    liveDemo: 'https://readstack-seven.vercel.app/',
+    category: 'Frontend',
+  },
+  {
     title: 'Sistema de Chamados',
     description:
       'Aplicação para criação de chamados, com registro de usuários, login e controle de rotas.',

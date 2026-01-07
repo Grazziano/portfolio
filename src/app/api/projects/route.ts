@@ -12,10 +12,12 @@ const projectSchema = z.object({
   github: z.string().url().optional(),
   liveDemo: z.string().url().optional(),
   category: z.string().min(2),
+  listed: z.boolean().default(true).optional(),
 });
 
 export async function GET() {
   const projects = await prisma.project.findMany({
+    where: { listed: true },
     orderBy: { createdAt: 'desc' },
   });
   return NextResponse.json(projects);
