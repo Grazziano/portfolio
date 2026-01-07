@@ -10,6 +10,7 @@ function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [usersCount, setUsersCount] = useState<number | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,6 +36,18 @@ function Header() {
       }
     };
     check();
+  }, []);
+  useEffect(() => {
+    const checkCount = async () => {
+      try {
+        const res = await fetch('/api/users/count', { cache: 'no-store' });
+        const data = await res.json();
+        setUsersCount(typeof data?.count === 'number' ? data.count : 0);
+      } catch {
+        setUsersCount(0);
+      }
+    };
+    checkCount();
   }, []);
 
   const navItems = [
@@ -97,6 +110,11 @@ function Header() {
               {isLoggedIn && (
                 <Button asChild variant="outline">
                   <a href="/admin/projects/new">Add Project</a>
+                </Button>
+              )}
+              {!isLoggedIn && usersCount === 0 && (
+                <Button asChild variant="outline">
+                  <a href="/register">Registrar</a>
                 </Button>
               )}
               {isLoggedIn ? (
@@ -165,6 +183,17 @@ function Header() {
                   </a>
                 )}
               </li>
+              {!isLoggedIn && usersCount === 0 && (
+                <li>
+                  <a
+                    href="/register"
+                    className="block text-foreground/80 hover:text-foreground transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Registrar
+                  </a>
+                </li>
+              )}
               {isLoggedIn && (
                 <li>
                   <a
