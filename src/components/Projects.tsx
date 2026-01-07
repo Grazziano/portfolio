@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from 'react';
 import type { Project } from '@/data/projects';
 import { Input } from './ui/input';
 import { Button } from './ui/button';
+import { useSession } from 'next-auth/react';
 import {
   Card,
   CardContent,
@@ -17,6 +18,7 @@ function Projects() {
   const [activeCategory, setActiveCategory] = useState('All');
   const [dynamicProjects, setDynamicProjects] = useState<Project[]>([]);
   const [query, setQuery] = useState('');
+  const { data: session } = useSession();
 
   type DbProject = {
     id?: string;
@@ -164,6 +166,12 @@ function Projects() {
                     >
                       Live Demo
                     </a>
+                  </Button>
+                )}
+
+                {session && (
+                  <Button variant="ghost" size="sm" asChild>
+                    <a href={`/admin/projects/${project.id}/edit`}>Edit</a>
                   </Button>
                 )}
               </CardFooter>
