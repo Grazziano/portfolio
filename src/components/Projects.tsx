@@ -1,6 +1,6 @@
 'use client';
-import React, { useEffect, useMemo, useState } from 'react';
-import { projectsData, type Project } from '@/data/projects';
+import { useEffect, useMemo, useState } from 'react';
+import type { Project } from '@/data/projects';
 import { Button } from './ui/button';
 import {
   Card,
@@ -14,9 +14,7 @@ import { Github } from 'lucide-react';
 
 function Projects() {
   const [activeCategory, setActiveCategory] = useState('All');
-  const [dynamicProjects, setDynamicProjects] = useState<typeof projectsData>(
-    []
-  );
+  const [dynamicProjects, setDynamicProjects] = useState<Project[]>([]);
 
   type DbProject = {
     id?: string;
@@ -54,10 +52,7 @@ function Projects() {
     load();
   }, []);
 
-  const allProjects = useMemo(
-    () => [...projectsData, ...dynamicProjects],
-    [dynamicProjects]
-  );
+  const allProjects = useMemo(() => [...dynamicProjects], [dynamicProjects]);
 
   const categories = useMemo(
     () => ['All', ...Array.from(new Set(allProjects.map((p) => p.category)))],
