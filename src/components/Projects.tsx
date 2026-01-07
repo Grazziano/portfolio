@@ -1,6 +1,6 @@
 'use client';
-import React, { useState } from 'react';
-import { projectsData, categories } from '@/data/projects';
+import React, { useEffect, useMemo, useState } from 'react';
+import { projectsData, type Project } from '@/data/projects';
 import { Button } from './ui/button';
 import {
   Card,
@@ -14,11 +14,60 @@ import { Github } from 'lucide-react';
 
 function Projects() {
   const [activeCategory, setActiveCategory] = useState('All');
+  const [dynamicProjects, setDynamicProjects] = useState<typeof projectsData>(
+    []
+  );
+
+  type DbProject = {
+    id?: string;
+    title: string;
+    description: string;
+    technologies?: string[];
+    image: string;
+    github?: string | null;
+    liveDemo?: string | null;
+    category: string;
+  };
+
+  useEffect(() => {
+    const load = async () => {
+      try {
+        const res = await fetch('/api/projects', { cache: 'no-store' });
+        if (res.ok) {
+          const data = await res.json();
+          const mapped: Project[] = (data as DbProject[]).map(
+            (p, index: number) => ({
+              id: p.id ?? `db-${index}`,
+              title: p.title,
+              description: p.description,
+              technologies: p.technologies ?? [],
+              image: p.image,
+              github: p.github ?? undefined,
+              liveDemo: p.liveDemo ?? undefined,
+              category: p.category,
+            })
+          );
+          setDynamicProjects(mapped);
+        }
+      } catch {}
+    };
+    load();
+  }, []);
+
+  const allProjects = useMemo(
+    () => [...projectsData, ...dynamicProjects],
+    [dynamicProjects]
+  );
+
+  const categories = useMemo(
+    () => ['All', ...Array.from(new Set(allProjects.map((p) => p.category)))],
+    [allProjects]
+  );
 
   const filteredProjects =
     activeCategory === 'All'
-      ? projectsData
-      : projectsData.filter((project) => project.category === activeCategory);
+      ? allProjects
+      : allProjects.filter((project) => project.category === activeCategory);
 
   return (
     <section id="projects" className="px-4 py-24 md:px-8 lg:px-16">
@@ -33,13 +82,6 @@ function Projects() {
         </div>
 
         <div className="flex flex-wrap justify-center gap-2 mb-10">
-          <Button
-            variant={activeCategory === 'All' ? 'default' : 'outline'}
-            onClick={() => setActiveCategory('All')}
-            className="mb-2"
-          >
-            All
-          </Button>
           {categories.map((category) => (
             <Button
               key={category}
