@@ -1,5 +1,4 @@
-import React from 'react';
-import { Github, Gitlab, Linkedin, Twitter } from 'lucide-react';
+import { Github, Gitlab, Linkedin, Twitter, Lock } from 'lucide-react';
 
 function Footer() {
   const currentYear = new Date().getFullYear();
@@ -53,6 +52,13 @@ function Footer() {
               aria-label="Twitter"
             >
               <Twitter size={24} />
+            </a>
+            <a
+              href="/login"
+              className="text-foreground/70 hover:text-foreground transition-colors"
+              aria-label="Login"
+            >
+              <Lock size={24} />
             </a>
           </div>
         </div>

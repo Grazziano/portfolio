@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { Button } from './ui/button';
-import { Menu } from 'lucide-react';
+import { LogOutIcon, Menu } from 'lucide-react';
 // import ThemeToggle from './ThemeToggle';
 import { ModeToggle } from './ModeToggle';
 import { signOut, useSession } from 'next-auth/react';
@@ -11,6 +11,7 @@ function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const { data: session } = useSession();
   const isLoggedIn = !!session?.user;
+  const [usersCount, setUsersCount] = useState<number | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,7 +26,18 @@ function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Links de login/registro removidos; não é mais necessário checar contagem de usuários
+  useEffect(() => {
+    const checkCount = async () => {
+      try {
+        const res = await fetch('/api/users/count', { cache: 'no-store' });
+        const data = await res.json();
+        setUsersCount(typeof data?.count === 'number' ? data.count : 0);
+      } catch {
+        setUsersCount(0);
+      }
+    };
+    checkCount();
+  }, []);
 
   const navItems = [
     { name: 'Home', href: '#home' },
@@ -93,9 +105,14 @@ function Header() {
                     variant="ghost"
                     onClick={() => signOut({ callbackUrl: '/' })}
                   >
-                    Logout
+                    <LogOutIcon />
                   </Button>
                 </>
+              )}
+              {usersCount === 0 && (
+                <Button asChild variant="outline">
+                  <a href="/register">Registrar</a>
+                </Button>
               )}
             </div>
           </nav>
@@ -141,6 +158,17 @@ function Header() {
                   >
                     Logout
                   </button>
+                </li>
+              )}
+              {usersCount === 0 && (
+                <li>
+                  <a
+                    href="/register"
+                    className="block text-foreground/80 hover:text-foreground transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Registrar
+                  </a>
                 </li>
               )}
               {isLoggedIn && (
