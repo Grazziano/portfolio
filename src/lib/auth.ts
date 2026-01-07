@@ -5,6 +5,7 @@ import bcrypt from 'bcrypt';
 
 export const authOptions: NextAuthOptions = {
   session: { strategy: 'jwt' },
+  secret: process.env.NEXTAUTH_SECRET || 'dev-secret',
   providers: [
     Credentials({
       name: 'Credentials',
@@ -29,5 +30,20 @@ export const authOptions: NextAuthOptions = {
   ],
   pages: {
     signIn: '/login',
+    error: '/login',
+  },
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = (user as { id?: string }).id;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      if (session.user) {
+        (session.user as { id?: string }).id = token.id as string | undefined;
+      }
+      return session;
+    },
   },
 };

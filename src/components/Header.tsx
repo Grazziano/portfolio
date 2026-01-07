@@ -4,13 +4,13 @@ import { Button } from './ui/button';
 import { Menu } from 'lucide-react';
 // import ThemeToggle from './ThemeToggle';
 import { ModeToggle } from './ModeToggle';
-import { signOut } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [usersCount, setUsersCount] = useState<number | null>(null);
+  const { data: session } = useSession();
+  const isLoggedIn = !!session?.user;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,30 +25,7 @@ function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  useEffect(() => {
-    const check = async () => {
-      try {
-        const res = await fetch('/api/auth/session', { cache: 'no-store' });
-        const data = await res.json();
-        setIsLoggedIn(!!data?.user);
-      } catch {
-        setIsLoggedIn(false);
-      }
-    };
-    check();
-  }, []);
-  useEffect(() => {
-    const checkCount = async () => {
-      try {
-        const res = await fetch('/api/users/count', { cache: 'no-store' });
-        const data = await res.json();
-        setUsersCount(typeof data?.count === 'number' ? data.count : 0);
-      } catch {
-        setUsersCount(0);
-      }
-    };
-    checkCount();
-  }, []);
+  // Links de login/registro removidos; não é mais necessário checar contagem de usuários
 
   const navItems = [
     { name: 'Home', href: '#home' },
@@ -108,26 +85,17 @@ function Header() {
             <ModeToggle />
             <div className="flex items-center gap-2">
               {isLoggedIn && (
-                <Button asChild variant="outline">
-                  <a href="/admin/projects/new">Add Project</a>
-                </Button>
-              )}
-              {!isLoggedIn && usersCount === 0 && (
-                <Button asChild variant="outline">
-                  <a href="/register">Registrar</a>
-                </Button>
-              )}
-              {isLoggedIn ? (
-                <Button
-                  variant="ghost"
-                  onClick={() => signOut({ callbackUrl: '/' })}
-                >
-                  Logout
-                </Button>
-              ) : (
-                <Button asChild>
-                  <a href="/login">Login</a>
-                </Button>
+                <>
+                  <Button asChild variant="outline">
+                    <a href="/admin/projects/new">Add Project</a>
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    onClick={() => signOut({ callbackUrl: '/' })}
+                  >
+                    Logout
+                  </Button>
+                </>
               )}
             </div>
           </nav>
@@ -162,8 +130,8 @@ function Header() {
                   </a>
                 </li>
               ))}
-              <li>
-                {isLoggedIn ? (
+              {isLoggedIn && (
+                <li>
                   <button
                     className="block text-foreground/80 hover:text-foreground transition-colors"
                     onClick={() => {
@@ -173,25 +141,6 @@ function Header() {
                   >
                     Logout
                   </button>
-                ) : (
-                  <a
-                    href="/login"
-                    className="block text-foreground/80 hover:text-foreground transition-colors"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Login
-                  </a>
-                )}
-              </li>
-              {!isLoggedIn && usersCount === 0 && (
-                <li>
-                  <a
-                    href="/register"
-                    className="block text-foreground/80 hover:text-foreground transition-colors"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Registrar
-                  </a>
                 </li>
               )}
               {isLoggedIn && (
