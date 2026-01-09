@@ -3,10 +3,11 @@ export interface Project {
   title: string;
   description: string;
   technologies: string[];
-  image: string;
+  image?: string;
   github?: string;
   liveDemo?: string;
   category: string;
+  listed?: boolean;
 }
 
 const rawProjectsData: Project[] = [

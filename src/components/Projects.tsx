@@ -27,10 +27,11 @@ function Projects() {
     title: string;
     description: string;
     technologies?: string[];
-    image: string;
+    image?: string;
     github?: string | null;
     liveDemo?: string | null;
     category: string;
+    listed?: boolean;
   };
 
   useEffect(() => {
@@ -49,6 +50,7 @@ function Projects() {
               github: p.github ?? undefined,
               liveDemo: p.liveDemo ?? undefined,
               category: p.category,
+              listed: p.listed,
             })
           );
           setDynamicProjects(mapped);

@@ -21,8 +21,12 @@ const projectSchema = z
   }));
 
 export async function GET() {
+  const session = await getServerSession(authOptions);
+
+  const where = session ? {} : { listed: true };
+
   const projects = await prisma.project.findMany({
-    where: { listed: true },
+    where,
     orderBy: { createdAt: 'desc' },
   });
   return NextResponse.json(projects);
