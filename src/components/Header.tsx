@@ -92,15 +92,44 @@ function Header() {
                   </a>
                 </li>
               ))}
+              {isLoggedIn && (
+                <>
+                  {/* <span className="text-sm text-foreground/70">
+                    {session?.user?.name || session?.user?.email}
+                  </span> */}
+                  <a
+                    href="/admin/projects/new"
+                    className="text-foreground/80 hover:text-foreground transition-colors"
+                  >
+                    Add Project
+                  </a>
+                </>
+              )}
             </ul>
+
+            {isLoggedIn && (
+              <Button
+                variant="ghost"
+                onClick={() => signOut({ callbackUrl: '/' })}
+              >
+                <LogOutIcon />
+              </Button>
+            )}
+
             {/* <ThemeToggle /> */}
             <ModeToggle />
             <div className="flex items-center gap-2">
-              {isLoggedIn && (
+              {/* {isLoggedIn && (
                 <>
-                  <Button asChild variant="outline">
-                    <a href="/admin/projects/new">Add Project</a>
-                  </Button>
+                  <span className="text-sm text-foreground/70">
+                    {session?.user?.name || session?.user?.email}
+                  </span>
+                  <a
+                    href="/admin/projects/new"
+                    className="text-foreground/80 hover:text-foreground transition-colors"
+                  >
+                    Add Project
+                  </a>
                   <Button
                     variant="ghost"
                     onClick={() => signOut({ callbackUrl: '/' })}
@@ -108,7 +137,7 @@ function Header() {
                     <LogOutIcon />
                   </Button>
                 </>
-              )}
+              )} */}
               {usersCount === 0 && (
                 <Button asChild variant="outline">
                   <a href="/register">Registrar</a>
@@ -148,6 +177,24 @@ function Header() {
                 </li>
               ))}
               {isLoggedIn && (
+                <>
+                  {/* <li>
+                    <span className="text-sm text-foreground/70">
+                      {session?.user?.name || session?.user?.email}
+                    </span>
+                  </li> */}
+                  <li>
+                    <a
+                      href="/admin/projects/new"
+                      className="block text-foreground/80 hover:text-foreground transition-colors"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      Add Project
+                    </a>
+                  </li>
+                </>
+              )}
+              {isLoggedIn && (
                 <li>
                   <button
                     className="block text-foreground/80 hover:text-foreground transition-colors"
@@ -171,7 +218,7 @@ function Header() {
                   </a>
                 </li>
               )}
-              {isLoggedIn && (
+              {/* {isLoggedIn && (
                 <li>
                   <a
                     href="/admin/projects/new"
@@ -181,7 +228,7 @@ function Header() {
                     Add Project
                   </a>
                 </li>
-              )}
+              )} */}
             </ul>
           </div>
         )}
