@@ -52,12 +52,12 @@ export default function FormClient() {
       github: values.github || undefined,
       liveDemo: values.liveDemo || undefined,
     };
-    
+
     // Only add image if it's not empty
     if (values.image && values.image.trim()) {
       payload.image = values.image;
     }
-    
+
     const res = await fetch('/api/projects', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -165,7 +165,7 @@ export default function FormClient() {
                 name="liveDemo"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Live Demo (URL)</FormLabel>
+                    <FormLabel>Live Demo (URL) - Opcional</FormLabel>
                     <FormControl>
                       <Input {...field} />
                     </FormControl>

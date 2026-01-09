@@ -185,7 +185,7 @@ export default function FormEditClient({ id, initial }: Props) {
                 name="liveDemo"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Live Demo (URL)</FormLabel>
+                    <FormLabel>Live Demo (URL) - Opcional</FormLabel>
                     <FormControl>
                       <Input {...field} />
                     </FormControl>
