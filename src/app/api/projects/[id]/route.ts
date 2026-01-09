@@ -9,7 +9,7 @@ const updateSchema = z
     title: z.string().min(2).optional(),
     description: z.string().min(10).optional(),
     technologies: z.array(z.string()).optional(),
-    image: z.string().url().optional(),
+    image: z.union([z.string().url(), z.literal(''), z.null()]).optional(),
     github: z.string().url().nullable().optional(),
     liveDemo: z.string().url().nullable().optional(),
     category: z.string().min(2).optional(),
@@ -17,7 +17,11 @@ const updateSchema = z
   })
   .refine((data) => Object.keys(data).length > 0, {
     message: 'No fields to update',
-  });
+  })
+  .transform((data) => ({
+    ...data,
+    image: data.image === '' || data.image === null ? null : data.image,
+  }));
 
 export async function GET(
   _req: NextRequest,

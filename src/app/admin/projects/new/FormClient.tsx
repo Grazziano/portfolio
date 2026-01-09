@@ -19,7 +19,7 @@ export default function FormClient() {
   const schema = z.object({
     title: z.string().min(2),
     description: z.string().min(10),
-    image: z.string().url(),
+    image: z.union([z.string().url(), z.literal('')]).optional(),
     category: z.string().min(2),
     technologies: z.string().min(2),
     github: z.string().url().optional(),
@@ -41,10 +41,9 @@ export default function FormClient() {
 
   const onSubmit = async (values: z.infer<typeof schema>) => {
     setLoading(true);
-    const payload = {
+    const payload: Record<string, any> = {
       title: values.title,
       description: values.description,
-      image: values.image,
       category: values.category,
       technologies: values.technologies
         .split(',')
@@ -53,6 +52,12 @@ export default function FormClient() {
       github: values.github || undefined,
       liveDemo: values.liveDemo || undefined,
     };
+    
+    // Only add image if it's not empty
+    if (values.image && values.image.trim()) {
+      payload.image = values.image;
+    }
+    
     const res = await fetch('/api/projects', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

@@ -18,7 +18,7 @@ import { Textarea } from '@/components/ui/textarea';
 const schema = z.object({
   title: z.string().min(2),
   description: z.string().min(10),
-  image: z.string().url(),
+  image: z.union([z.string().url(), z.literal('')]).optional(),
   category: z.string().min(2),
   technologies: z.string().min(2),
   github: z.string().url().optional().or(z.literal('')),
@@ -58,10 +58,9 @@ export default function FormEditClient({ id, initial }: Props) {
 
   const onSubmit = async (values: z.infer<typeof schema>) => {
     setLoading(true);
-    const payload = {
+    const payload: Record<string, any> = {
       title: values.title,
       description: values.description,
-      image: values.image,
       category: values.category,
       technologies: values.technologies
         .split(',')
@@ -71,6 +70,14 @@ export default function FormEditClient({ id, initial }: Props) {
       liveDemo: values.liveDemo || null,
       listed: values.listed,
     };
+
+    // Only add image if it's not empty
+    if (values.image && values.image.trim()) {
+      payload.image = values.image;
+    } else {
+      payload.image = null;
+    }
+
     const res = await fetch(`/api/projects/${id}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },

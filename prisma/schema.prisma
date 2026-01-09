@@ -20,7 +20,7 @@ model Project {
   title        String
   description  String
   technologies String[]
-  image        String
+  image        String?
   github       String?
   liveDemo     String?
   category     String

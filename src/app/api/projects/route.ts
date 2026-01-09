@@ -4,16 +4,21 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { z } from 'zod';
 
-const projectSchema = z.object({
-  title: z.string().min(2),
-  description: z.string().min(10),
-  technologies: z.array(z.string()).default([]),
-  image: z.string().url(),
-  github: z.string().url().optional(),
-  liveDemo: z.string().url().optional(),
-  category: z.string().min(2),
-  listed: z.boolean().default(true).optional(),
-});
+const projectSchema = z
+  .object({
+    title: z.string().min(2),
+    description: z.string().min(10),
+    technologies: z.array(z.string()).default([]),
+    image: z.union([z.string().url(), z.literal(''), z.null()]).optional(),
+    github: z.string().url().optional(),
+    liveDemo: z.string().url().optional(),
+    category: z.string().min(2),
+    listed: z.boolean().default(true).optional(),
+  })
+  .transform((data) => ({
+    ...data,
+    image: data.image && data.image.trim() ? data.image : undefined,
+  }));
 
 export async function GET() {
   const projects = await prisma.project.findMany({
