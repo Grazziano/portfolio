@@ -31,7 +31,7 @@ type Props = {
   initial: {
     title: string;
     description: string;
-    image: string;
+    image: string | null;
     category: string;
     technologies: string[];
     github: string | null;
@@ -46,7 +46,7 @@ export default function FormEditClient({ id, initial }: Props) {
     defaultValues: {
       title: initial.title,
       description: initial.description,
-      image: initial.image,
+      image: initial.image ?? '',
       category: initial.category,
       technologies: (initial.technologies ?? []).join(', '),
       github: initial.github ?? '',
