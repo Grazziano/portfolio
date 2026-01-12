@@ -1,7 +1,11 @@
+'use client';
 import { Github, Gitlab, Linkedin, Twitter, Lock } from 'lucide-react';
+import { useSession } from 'next-auth/react';
 
 function Footer() {
   const currentYear = new Date().getFullYear();
+  const { data: session } = useSession();
+  const isLoggedIn = !!session?.user;
 
   return (
     <footer className="bg-background py-12 border-t">
@@ -53,13 +57,15 @@ function Footer() {
             >
               <Twitter size={24} />
             </a>
-            <a
-              href="/login"
-              className="text-foreground/70 hover:text-foreground transition-colors"
-              aria-label="Login"
-            >
-              <Lock size={24} />
-            </a>
+            {!isLoggedIn && (
+              <a
+                href="/login"
+                className="text-foreground/70 hover:text-foreground transition-colors"
+                aria-label="Login"
+              >
+                <Lock size={24} />
+              </a>
+            )}
           </div>
         </div>
 
