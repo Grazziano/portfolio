@@ -24,9 +24,11 @@ import { toast } from 'sonner';
 import * as z from 'zod';
 
 const formSchema = z.object({
-  resume: z.instanceof(File, {
-    message: 'Por favor, selecione um arquivo PDF',
-  }),
+  resume: z
+    .instanceof(File, {
+      message: 'Por favor, selecione um arquivo PDF',
+    })
+    .optional(),
 });
 
 function ResumeUploadForm() {
@@ -96,7 +98,8 @@ function ResumeUploadForm() {
         throw new Error(errorData.error || 'Erro ao fazer upload do currículo');
       }
 
-      const uploadData = await uploadResponse.json();
+      // const uploadData = await uploadResponse.json();
+      await uploadResponse.json();
 
       toast.success('Currículo atualizado com sucesso!');
       setUploadSuccess(true);
