@@ -39,10 +39,8 @@ export async function POST(req: Request) {
       await mkdir(uploadsDir, { recursive: true });
     }
 
-    // Gerar nome único para o arquivo
-    const timestamp = Date.now();
-    const sanitizedName = file.name.replace(/[^a-zA-Z0-9.-]/g, '_');
-    const fileName = `${timestamp}_${sanitizedName}`;
+    // Usar nome padrão para o arquivo (sempre sobrescreve o anterior)
+    const fileName = 'resume.pdf';
     const filePath = join(uploadsDir, fileName);
 
     // Converter File para Buffer e salvar

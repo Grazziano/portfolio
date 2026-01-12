@@ -1,4 +1,3 @@
-import React from 'react';
 import { skillsData } from '@/data/skills';
 import { Button } from './ui/button';
 import { Progress } from './ui/progress';
@@ -51,10 +50,9 @@ function About() {
             </p>
             <Button asChild>
               <a
-                // href="https://drive.google.com/file/d/1IdTIrHVrGnRfOOl4gKh4Cn0MEF_kXv8Z/view?usp=drive_link"
-                href="https://drive.google.com/file/d/1m7wmUYVGwx1_3O-SPAzWj02yLEtz53D2/view?usp=drive_link"
+                href="/uploads/resumes/resume.pdf"
                 target="_blank"
-                download="grazziano_resume.pdf"
+                // download="grazziano_resume.pdf"
               >
                 Download Resume
               </a>
