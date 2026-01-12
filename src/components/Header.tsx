@@ -51,13 +51,31 @@ function Header() {
     e: React.MouseEvent<HTMLAnchorElement>,
     href: string
   ) => {
-    e.preventDefault();
+    const isHash = href.startsWith('#');
     const targetId = href.replace('#', '');
-    const el = document.getElementById(targetId);
-    if (el) {
+    const el = isHash ? document.getElementById(targetId) : null;
+
+    // Se for um hash e o elemento existir, prevenimos o comportamento padrão e fazemos scroll suave
+    if (isHash && el) {
+      e.preventDefault();
       el.scrollIntoView({ behavior: 'smooth' });
+      setIsMenuOpen(false);
+      return;
     }
-    setIsMenuOpen(false); // Fecha o menu mobile (se estiver aberto)
+
+    // Se for um hash, mas o elemento não existir nesta página, redirecionar para a home com o fragmento
+    if (isHash && !el) {
+      // Evita recarregar a mesma página sem necessidade
+      if (window.location.pathname !== '/') {
+        e.preventDefault();
+        window.location.assign(`/${href}`);
+      }
+      setIsMenuOpen(false);
+      return;
+    }
+
+    // Para links normais (não hash), permitir comportamento padrão e apenas fechar o menu mobile
+    setIsMenuOpen(false);
   };
 
   return (
