@@ -1,7 +1,5 @@
-import { existsSync } from 'fs';
-import { mkdir, writeFile } from 'fs/promises';
+import { del, list, put } from '@vercel/blob';
 import { NextResponse } from 'next/server';
-import { join } from 'path';
 
 export async function POST(req: Request) {
   try {
@@ -33,34 +31,46 @@ export async function POST(req: Request) {
       );
     }
 
-    // Criar diretório se não existir
-    const uploadsDir = join(process.cwd(), 'public', 'uploads', 'resumes');
-    if (!existsSync(uploadsDir)) {
-      await mkdir(uploadsDir, { recursive: true });
+    // Nome padrão para o arquivo
+    const fileName = 'resume.pdf';
+
+    // Deletar arquivo anterior se existir
+    try {
+      const { blobs } = await list({ prefix: fileName });
+      for (const blob of blobs) {
+        if (blob.pathname === fileName) {
+          await del(blob.url);
+        }
+      }
+    } catch (error) {
+      // Ignorar erro se o arquivo não existir
+      console.log('Arquivo anterior não encontrado ou erro ao deletar:', error);
     }
 
-    // Usar nome padrão para o arquivo (sempre sobrescreve o anterior)
-    const fileName = 'resume.pdf';
-    const filePath = join(uploadsDir, fileName);
-
-    // Converter File para Buffer e salvar
+    // Converter File para Buffer
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
-    await writeFile(filePath, buffer);
 
-    // Retornar URL relativa do arquivo
-    const fileUrl = `/uploads/resumes/${fileName}`;
+    // Fazer upload para Vercel Blob Storage
+    const blob = await put(fileName, buffer, {
+      access: 'public',
+      addRandomSuffix: false, // Manter nome fixo
+      contentType: 'application/pdf',
+    });
 
     return NextResponse.json({
       success: true,
-      fileUrl,
+      fileUrl: blob.url,
       fileName: file.name,
       fileSize: file.size,
     });
   } catch (error) {
     console.error('Erro ao fazer upload do arquivo:', error);
     return NextResponse.json(
-      { error: 'Erro ao fazer upload do arquivo' },
+      {
+        error: 'Erro ao fazer upload do arquivo',
+        details: error instanceof Error ? error.message : 'Erro desconhecido',
+      },
       { status: 500 }
     );
   }

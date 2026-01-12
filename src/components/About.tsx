@@ -50,9 +50,9 @@ function About() {
             </p>
             <Button asChild>
               <a
-                href="/uploads/resumes/resume.pdf"
+                href="/api/resume"
                 target="_blank"
-                // download="grazziano_resume.pdf"
+                download="grazziano_resume.pdf"
               >
                 Download Resume
               </a>
