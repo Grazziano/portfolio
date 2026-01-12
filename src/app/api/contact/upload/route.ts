@@ -37,14 +37,21 @@ export async function POST(req: Request) {
     // Deletar arquivo anterior se existir
     try {
       const { blobs } = await list({ prefix: fileName });
-      for (const blob of blobs) {
-        if (blob.pathname === fileName) {
-          await del(blob.url);
-        }
+
+      // Deletar todos os arquivos que correspondem ao nome exato
+      const deletePromises = blobs
+        .filter((blob) => blob.pathname === fileName)
+        .map((blob) => del(blob.url));
+
+      if (deletePromises.length > 0) {
+        await Promise.all(deletePromises);
+        console.log(
+          `Arquivo anterior deletado: ${deletePromises.length} arquivo(s)`
+        );
       }
     } catch (error) {
-      // Ignorar erro se o arquivo não existir
-      console.log('Arquivo anterior não encontrado ou erro ao deletar:', error);
+      // Log do erro mas continua com o upload (o put pode sobrescrever)
+      console.warn('Aviso ao tentar deletar arquivo anterior:', error);
     }
 
     // Converter File para Buffer
@@ -52,9 +59,10 @@ export async function POST(req: Request) {
     const buffer = Buffer.from(bytes);
 
     // Fazer upload para Vercel Blob Storage
+    // Se o arquivo já existir, será sobrescrito
     const blob = await put(fileName, buffer, {
       access: 'public',
-      addRandomSuffix: false, // Manter nome fixo
+      addRandomSuffix: false, // Manter nome fixo (sobrescreve se existir)
       contentType: 'application/pdf',
     });
 
