@@ -1,10 +1,10 @@
 'use client';
+import { LogOutIcon, Menu } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import { Button } from './ui/button';
-import { LogOutIcon, Menu } from 'lucide-react';
 // import ThemeToggle from './ThemeToggle';
-import { ModeToggle } from './ModeToggle';
 import { signOut, useSession } from 'next-auth/react';
+import { ModeToggle } from './ModeToggle';
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -103,6 +103,12 @@ function Header() {
                   >
                     Add Project
                   </a>
+                  <a
+                    href="/submit-resume"
+                    className="text-foreground/80 hover:text-foreground transition-colors"
+                  >
+                    Submit Resume
+                  </a>
                 </>
               )}
             </ul>
@@ -190,6 +196,15 @@ function Header() {
                       onClick={() => setIsMenuOpen(false)}
                     >
                       Add Project
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="/submit-resume"
+                      className="block text-foreground/80 hover:text-foreground transition-colors"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      Submit Resume
                     </a>
                   </li>
                 </>

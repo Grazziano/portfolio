@@ -1,10 +1,12 @@
 'use client';
-import React, { useState } from 'react';
-import emailjs from 'emailjs-com';
 import { zodResolver } from '@hookform/resolvers/zod';
+import emailjs from 'emailjs-com';
+import { LoaderCircle } from 'lucide-react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import * as z from 'zod';
 import { toast } from 'sonner';
+import * as z from 'zod';
+import { Button } from './ui/button';
 import {
   Form,
   FormControl,
@@ -15,8 +17,6 @@ import {
 } from './ui/form';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
-import { Button } from './ui/button';
-import { LoaderCircle } from 'lucide-react';
 
 const formSchema = z.object({
   name: z.string().min(2, {
